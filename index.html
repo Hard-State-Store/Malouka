@@ -4,69 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ملاك مرجان - Malak Marjan</title>
-    <!-- استدعاء خطوط عربية وإنجليزية أنيقة -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="malak.png">
+    <!-- Google Fonts for premium bilingual support -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=Outfit:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* الإعدادات الأساسية (الوضع الفاتح الافتراضي) */
+        /* =========================================
+           CSS Variables & Themes (Feminine & Magical)
+        ========================================= */
         :root {
-            --bg-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            /* Light Mode - Sakura Glass Theme */
+            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 30%, #fbc2eb 70%, #a6c1ee 100%);
             --card-bg: rgba(255, 255, 255, 0.45);
-            --card-border: rgba(255, 255, 255, 0.5);
-            --text-main: #333;
-            --text-title: #6a1b9a;
-            --text-subtitle: #555;
-            --text-desc: #444;
-            --desc-bg: rgba(255, 255, 255, 0.6);
-            --highlight: #9c27b0;
-            --btn-control-bg: rgba(255, 255, 255, 0.4);
-            --btn-control-text: #333;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --friend-bg: rgba(255, 255, 255, 0.5);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --text-main: #4a2840;
+            --text-title: #b83280;
+            --text-subtitle: #863063;
+            --text-desc: #5f3750;
+            --desc-bg: rgba(255, 255, 255, 0.65);
+            --highlight: #d53f8c;
+            --btn-control-bg: rgba(255, 255, 255, 0.5);
+            --btn-control-text: #b83280;
+            --shadow-color: rgba(184, 50, 128, 0.15);
+            --friend-bg: rgba(255, 255, 255, 0.55);
+            --neon-glow: 0 0 15px rgba(213, 63, 140, 0.3);
+            
+            --bow-color: #ff85a2;
+            --bow-shade: #f75c81;
+            
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --font-ar: 'Tajawal', 'Cairo', sans-serif;
+            --font-en: 'Outfit', 'Poppins', sans-serif;
         }
 
-        /* متغيرات الوضع الداكن (Dark Mode) */
         body.dark-mode {
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --text-title: #c084fc;
-            --text-subtitle: #cbd5e1;
-            --text-desc: #e2e8f0;
-            --desc-bg: rgba(0, 0, 0, 0.4);
-            --highlight: #e879f9;
-            --btn-control-bg: rgba(0, 0, 0, 0.5);
-            --btn-control-text: #f8fafc;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --friend-bg: rgba(30, 41, 59, 0.5);
+            /* Dark Mode - Amethyst & Rose Glow */
+            --bg-gradient: linear-gradient(135deg, #090613 0%, #150f28 35%, #2a113b 70%, #06040b 100%);
+            --card-bg: rgba(18, 14, 33, 0.65);
+            --card-border: rgba(255, 133, 162, 0.25);
+            --text-main: #fce7f3;
+            --text-title: #f472b6;
+            --text-subtitle: #c084fc;
+            --text-desc: #e9d5ff;
+            --desc-bg: rgba(10, 7, 20, 0.55);
+            --highlight: #f472b6;
+            --btn-control-bg: rgba(30, 20, 50, 0.6);
+            --btn-control-text: #fce7f3;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --friend-bg: rgba(30, 24, 52, 0.65);
+            --neon-glow: 0 0 25px rgba(244, 114, 182, 0.45);
+            
+            --bow-color: #f472b6;
+            --bow-shade: #db2777;
+        }
+
+        /* =========================================
+           Global Settings
+        ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html[dir="rtl"] {
+            font-family: var(--font-ar);
+        }
+        
+        html[dir="ltr"] {
+            font-family: var(--font-en);
         }
 
         body {
-            margin: 0;
-            padding: 40px 0;
-            font-family: 'Tajawal', 'Poppins', sans-serif;
-            background: var(--bg-gradient);
             min-height: 100vh;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--text-main);
+            padding: 60px 20px;
             overflow-x: hidden;
             position: relative;
-            transition: background 0.5s ease;
+            transition: background 0.8s ease, color 0.4s ease;
         }
 
-        /* أزرار التحكم (اللغة والوضع الداكن) */
+        /* Canvas particles layer */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Container & Cards spacing */
+        .container {
+            width: 100%;
+            max-width: 520px;
+            z-index: 5;
+            position: relative;
+            animation: cardFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cardFadeIn {
+            0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* =========================================
+           Floating Control Panel & Music Player
+        ========================================= */
         .controls {
             position: fixed;
             top: 25px;
             right: 25px;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             z-index: 100;
-            transition: all 0.5s ease;
         }
 
         html[dir="ltr"] .controls {
@@ -76,351 +140,934 @@
 
         .control-btn {
             background: var(--btn-control-bg);
-            border: 1px solid var(--card-border);
+            border: 1.5px solid var(--card-border);
             color: var(--btn-control-text);
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 1.3rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            font-size: 1.25rem;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .control-btn:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.12) translateY(-2px);
+            border-color: var(--highlight);
+            box-shadow: var(--neon-glow);
         }
 
-        /* حاوية المحتوى */
-        .container {
-            text-align: center;
-            z-index: 10;
-            padding: 20px;
-            width: 100%;
-            box-sizing: border-box;
+        /* Music button active spin animation */
+        .music-btn.playing i {
+            animation: musicRotate 4s linear infinite;
+            color: var(--highlight);
         }
 
-        /* تصميم البطاقة الرئيسية */
+        @keyframes musicRotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Little musical notes rising from button */
+        .music-note {
+            position: absolute;
+            color: var(--highlight);
+            pointer-events: none;
+            font-size: 12px;
+            animation: riseNote 1.5s ease-out forwards;
+            z-index: 101;
+        }
+
+        @keyframes riseNote {
+            0% { opacity: 1; transform: translateY(0) scale(0.8) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-50px) scale(1.4) rotate(45deg); }
+        }
+
+        /* =========================================
+           Sleek Glassmorphic Card
+        ========================================= */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            padding: 40px 30px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px var(--shadow-color);
-            max-width: 480px;
-            margin: 0 auto;
-            transition: all 0.5s ease;
-        }
-
-        html[dir="ltr"] .card {
-            font-family: 'Poppins', sans-serif;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid var(--card-border);
+            padding: 50px 30px 40px;
+            border-radius: 35px;
+            box-shadow: 0 25px 55px var(--shadow-color);
+            position: relative;
+            transition: var(--transition);
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 35px 75px var(--shadow-color), var(--neon-glow);
         }
 
-        /* صورة الملف الشخصي */
+        /* Decorative Pink Bows on Corners */
+        .ribbon-bow {
+            position: absolute;
+            top: -12px;
+            width: 50px;
+            height: 30px;
+            z-index: 12;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .card:hover .ribbon-bow {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .ribbon-bow.left {
+            left: 20px;
+        }
+        .ribbon-bow.right {
+            right: 20px;
+            transform: scaleX(-1);
+        }
+        .card:hover .ribbon-bow.right {
+            transform: scaleX(-1) scale(1.15) rotate(5deg);
+        }
+
+        /* CSS Bow Drawing */
+        .bow-knot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--bow-color);
+            border-radius: 50%;
+            top: 8px;
+            left: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 3;
+        }
+        .bow-loop-l, .bow-loop-r {
+            position: absolute;
+            width: 22px;
+            height: 18px;
+            border: 3px solid var(--bow-shade);
+            background: var(--bow-color);
+            border-radius: 50% 50% 10% 50%;
+            top: 5px;
+        }
+        .bow-loop-l {
+            left: 0;
+            transform: rotate(-15deg);
+        }
+        .bow-loop-r {
+            right: 0;
+            transform: scaleX(-1) rotate(-15deg);
+            left: auto;
+        }
+        .bow-tail-l, .bow-tail-r {
+            position: absolute;
+            width: 6px;
+            height: 20px;
+            background: var(--bow-color);
+            top: 18px;
+            border-radius: 2px;
+            z-index: 1;
+        }
+        .bow-tail-l {
+            left: 15px;
+            transform: rotate(25deg);
+        }
+        .bow-tail-r {
+            right: 15px;
+            transform: rotate(-25deg);
+        }
+
+        /* =========================================
+           Avatar & Glowing Rings
+        ========================================= */
         .avatar-container {
-            width: 150px;
-            height: 150px;
-            margin: -80px auto 20px;
+            width: 160px;
+            height: 160px;
+            margin: -110px auto 25px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animated Glowing Ring */
+        .avatar-glow {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--highlight), #a6c1ee, var(--bow-color), var(--highlight));
+            background-size: 300% 300%;
+            z-index: -1;
+            animation: borderGlow 6s linear infinite;
+            opacity: 0.85;
+            box-shadow: var(--neon-glow);
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .avatar-frame {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             background: #fff;
-            padding: 8px;
-            box-shadow: 0 10px 25px var(--shadow-color);
-            position: relative;
+            padding: 6px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
         }
 
-        body.dark-mode .avatar-container {
-            background: #1e293b;
-            border-color: #334155;
+        body.dark-mode .avatar-frame {
+            background: #18142c;
         }
 
-        .avatar-container img {
+        .avatar-frame img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* النصوص والعناوين */
-        .card h1 {
-            font-family: 'Amiri', serif;
+        .avatar-container:hover .avatar-frame img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* =========================================
+           Cute Bunny Mascot (Interactive CSS)
+        ========================================= */
+        .bunny-mascot {
+            position: absolute;
+            top: -72px;
+            left: 30px;
+            width: 60px;
+            height: 75px;
+            z-index: 8;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        html[dir="ltr"] .bunny-mascot {
+            left: auto;
+            right: 30px;
+        }
+
+        .bunny-mascot:hover {
+            transform: translateY(-8px) scale(1.08);
+        }
+
+        /* Bunny Ears */
+        .bunny-ear {
+            position: absolute;
+            width: 14px;
+            height: 38px;
+            background: #ffffff;
+            border-radius: 50% 50% 10% 10%;
+            border: 2px solid var(--text-main);
+            top: 2px;
+            transition: var(--transition);
+        }
+        .bunny-ear::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 26px;
+            background: #ffb3c6;
+            border-radius: 50%;
+            top: 4px;
+            left: 2px;
+        }
+        .bunny-ear.left {
+            left: 12px;
+            transform: rotate(-12deg);
+            transform-origin: bottom right;
+        }
+        .bunny-ear.right {
+            right: 12px;
+            transform: rotate(12deg);
+            transform-origin: bottom left;
+        }
+
+        /* Ear wiggle on mascot hover */
+        .bunny-mascot:hover .bunny-ear.left {
+            animation: wiggleLeftEar 0.6s ease infinite alternate;
+        }
+        .bunny-mascot:hover .bunny-ear.right {
+            animation: wiggleRightEar 0.6s ease infinite alternate;
+        }
+
+        @keyframes wiggleLeftEar {
+            0% { transform: rotate(-12deg); }
+            100% { transform: rotate(-25deg); }
+        }
+        @keyframes wiggleRightEar {
+            0% { transform: rotate(12deg); }
+            100% { transform: rotate(25deg); }
+        }
+
+        /* Bunny Face */
+        .bunny-face {
+            position: absolute;
+            width: 44px;
+            height: 36px;
+            background: #ffffff;
+            border-radius: 50% 50% 45% 45%;
+            border: 2px solid var(--text-main);
+            bottom: 4px;
+            left: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .bunny-eye {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--text-main);
+            border-radius: 50%;
+            top: 14px;
+            transition: var(--transition);
+        }
+        .bunny-eye.left { left: 10px; }
+        .bunny-eye.right { right: 10px; }
+
+        /* Winking bunny on hover */
+        .bunny-mascot:hover .bunny-eye.right {
+            height: 2px;
+            border-radius: 0;
+            transform: translateY(2px);
+        }
+
+        .bunny-nose {
+            position: absolute;
+            width: 4px;
+            height: 3px;
+            background: #ff85a2;
+            border-radius: 50%;
+            top: 17px;
+            left: 20px;
+        }
+
+        .bunny-cheek {
+            position: absolute;
+            width: 8px;
+            height: 5px;
+            background: #ffb3c6;
+            border-radius: 50%;
+            top: 19px;
+            opacity: 0.85;
+        }
+        .bunny-cheek.left { left: 5px; }
+        .bunny-cheek.right { right: 5px; }
+
+        /* Sparkle pop effect above bunny */
+        .bunny-love {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+        .bunny-mascot:active .bunny-love {
+            opacity: 1;
+            transform: translateY(-15px) scale(1.3);
+        }
+
+        /* =========================================
+           Profile Info & Typography
+        ========================================= */
+        h1.name {
+            font-family: 'Amiri', 'Cairo', serif;
             color: var(--text-title);
-            font-size: 2.8rem;
-            margin: 10px 0;
-            transition: color 0.3s ease;
-        }
-
-        html[dir="ltr"] .card h1 {
-            font-family: 'Poppins', sans-serif;
+            font-size: 2.75rem;
             font-weight: 700;
+            margin: 5px 0 10px;
+            transition: color 0.3s ease;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
-        .subtitle {
-            font-size: 1.2rem;
+        html[dir="ltr"] h1.name {
+            font-family: var(--font-en);
+            font-weight: 800;
+        }
+
+        .badge-age {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: var(--desc-bg);
+            border: 1px solid var(--card-border);
             color: var(--text-subtitle);
-            margin-bottom: 25px;
-            font-weight: bold;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: var(--transition);
         }
 
-        .description {
-            font-size: 1.15rem;
-            line-height: 1.8;
+        .badge-age:hover {
+            transform: scale(1.05);
+            background: var(--card-bg);
+            border-color: var(--highlight);
+        }
+
+        .badge-age .highlight {
+            color: var(--highlight);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; text-shadow: 0 0 8px var(--highlight); }
+            100% { opacity: 0.8; }
+        }
+
+        .description-box {
+            font-size: 1.12rem;
+            line-height: 1.85;
             color: var(--text-desc);
             background: var(--desc-bg);
-            padding: 15px;
-            border-radius: 15px;
+            border: 1.5px solid var(--card-border);
+            padding: 20px;
+            border-radius: 22px;
             margin-bottom: 25px;
-            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+            transition: var(--transition);
         }
 
-        .highlight {
-            color: var(--highlight);
-            font-weight: bold;
+        .description-box p {
+            margin-bottom: 10px;
+        }
+        .description-box p:last-child {
+            margin-bottom: 0;
         }
 
-        /* قسم الصديقات */
-        .friends-section {
-            margin-top: 30px;
-            border-top: 1px solid var(--card-border);
-            padding-top: 20px;
+        .description-box:hover {
+            background: var(--card-bg);
+            border-color: var(--highlight);
+            transform: scale(1.01);
         }
 
-        .friends-section h3 {
-            font-size: 1.4rem;
+        /* =========================================
+           Magical Countdown Widget
+        ========================================= */
+        .countdown-widget {
+            background: var(--desc-bg);
+            border: 2px dashed var(--card-border);
+            padding: 20px 15px;
+            border-radius: 24px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-widget:hover {
+            border-style: solid;
+            border-color: var(--highlight);
+            background: var(--card-bg);
+            box-shadow: var(--neon-glow);
+        }
+
+        .countdown-title {
+            font-size: 1.05rem;
+            font-weight: 700;
             color: var(--text-title);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Birthday present shaking on hover */
+        .countdown-title i {
+            color: var(--highlight);
+            animation: shakeGift 2s ease infinite;
+        }
+
+        @keyframes shakeGift {
+            0%, 100% { transform: rotate(0); }
+            15% { transform: rotate(-10deg) scale(1.1); }
+            30% { transform: rotate(10deg) scale(1.1); }
+            45% { transform: rotate(-5deg) scale(1.1); }
+            60% { transform: rotate(5deg) scale(1.1); }
+            75% { transform: rotate(0); }
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 5px;
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .countdown-item {
+            background: rgba(10, 7, 20, 0.4);
+        }
+
+        .countdown-item:hover {
+            background: var(--highlight);
+            color: white;
+            border-color: var(--highlight);
+            transform: scale(1.08);
+        }
+
+        .countdown-item:hover .countdown-val {
+            color: white;
+        }
+
+        .countdown-val {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-title);
+            font-family: var(--font-en);
+            line-height: 1.2;
+        }
+
+        .countdown-unit {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 4px;
+            opacity: 0.85;
+        }
+
+        /* =========================================
+           Buttons & Links Styling
+        ========================================= */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .primary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            width: 90%;
+            max-width: 320px;
+            padding: 14px 25px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(219, 39, 119, 0.35);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* Girly Pink Gradient for main insta button */
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 10px 25px rgba(220, 39, 67, 0.35);
+        }
+
+        /* Sparkle button */
+        .magic-btn {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.35);
+        }
+
+        .primary-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .primary-link:hover::before {
+            left: 100%;
+        }
+
+        .primary-link:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.45), var(--neon-glow);
+        }
+
+        .primary-link:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        /* Dynamic Hidden Message */
+        .msg-display {
+            margin-top: 10px;
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--text-title);
+            background: var(--desc-bg);
+            border: 2.5px solid var(--card-border);
+            padding: 18px 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            display: none;
+        }
+
+        .msg-display.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+            display: block;
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            70% { transform: scale(0.9); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* =========================================
+           Best Friends Section (Precious Glass)
+        ========================================= */
+        .friends-section {
+            margin-top: 35px;
+            border-top: 2px dashed var(--card-border);
+            padding-top: 25px;
+        }
+
+        .friends-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .friends-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .friend-item {
+        .friend-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--friend-bg);
-            padding: 10px 20px;
-            border-radius: 15px;
-            border: 1px solid var(--card-border);
-            transition: all 0.3s ease;
+            border: 1.5px solid var(--card-border);
+            padding: 14px 22px;
+            border-radius: 20px;
+            transition: var(--transition);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.02);
         }
 
-        .friend-item:hover {
-            transform: scale(1.02);
-            background: var(--desc-bg);
+        .friend-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: var(--card-bg);
+            border-color: var(--highlight);
+            box-shadow: 0 10px 25px var(--shadow-color);
         }
 
-        .friend-info {
+        .friend-profile {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: bold;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
             color: var(--text-main);
         }
 
-        .friend-info i {
+        .friend-profile i {
             color: var(--highlight);
+            transition: var(--transition);
         }
 
-        .friend-link {
+        .friend-card:hover .friend-profile i {
+            transform: scale(1.25) rotate(15deg);
+        }
+
+        .friend-action {
             color: white;
             background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
             text-decoration: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: opacity 0.2s;
-        }
-
-        .friend-link:hover {
-            opacity: 0.9;
-        }
-
-        /* تصميم زر إنستغرام الرئيسي لملاك */
-        .instagram-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-size: 1.2rem;
+            padding: 8px 18px;
             border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
-            margin-bottom: 15px;
-            width: 80%;
+            font-size: 0.92rem;
+            font-weight: 700;
+            box-shadow: 0 5px 12px rgba(220,39,67,0.25);
+            transition: var(--transition);
         }
 
-        .instagram-btn:hover {
-            transform: translateY(-3px);
-            color: white;
+        .friend-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(220,39,67,0.4);
+            opacity: 0.95;
         }
 
-        /* الأزرار التفاعلية */
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .magic-btn {
-            background: linear-gradient(45deg, #b388ff, #8c9eff);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(140, 158, 255, 0.4);
-            width: 80%;
-        }
-
-        .magic-btn:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(45deg, #8c9eff, #b388ff);
-        }
-
-        /* الرسالة التفاعلية */
-        .hidden-message {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--text-title);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.5s ease-in-out;
-            min-height: 40px;
-        }
-
-        .hidden-message.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* تأثيرات النجوم والخلفية */
-        .sparkle {
+        /* =========================================
+           Cursor Trails & Particle Styles
+        ========================================= */
+        .sparkle-particle {
             position: absolute;
+            pointer-events: none;
+            z-index: 1000;
+            animation: particleFly 1s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
             font-size: 20px;
-            pointer-events: none;
-            z-index: 100;
-            animation: sparkleAnim 1s forwards;
+            will-change: transform, opacity;
         }
 
-        @keyframes sparkleAnim {
-            0% { transform: scale(0) rotate(0deg); opacity: 1; }
-            100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+        @keyframes particleFly {
+            0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--mx), var(--my)) scale(1.4) rotate(var(--rot)); opacity: 0; }
         }
 
-        .floating-shape {
+        /* Hidden YouTube Iframe */
+        #yt-player-container {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float infinite linear;
+            width: 0;
+            height: 0;
+            opacity: 0;
             pointer-events: none;
-            backdrop-filter: blur(5px);
         }
 
-        body.dark-mode .floating-shape {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(2) rotate(360deg); opacity: 0; }
+        /* Responsive Adapts */
+        @media (max-width: 480px) {
+            body {
+                padding: 45px 15px 30px;
+            }
+            .controls {
+                top: 15px;
+                right: 15px;
+            }
+            html[dir="ltr"] .controls {
+                left: 15px;
+            }
+            .card {
+                padding: 45px 20px 30px;
+                border-radius: 28px;
+            }
+            h1.name {
+                font-size: 2.25rem;
+            }
+            .countdown-grid {
+                gap: 6px;
+            }
+            .countdown-val {
+                font-size: 1.2rem;
+            }
+            .countdown-unit {
+                font-size: 0.68rem;
+            }
+            .primary-link {
+                width: 100%;
+                font-size: 1.05rem;
+                padding: 12px 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- أزرار التحكم -->
+    <!-- Canvas for floating particles (Sakura & Stars) -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Hidden Container for YouTube Background Audio -->
+    <div id="yt-player-container">
+        <div id="yt-player"></div>
+    </div>
+
+    <!-- Top floating navigation controls -->
     <div class="controls">
+        <!-- Theme Toggle Button -->
         <button id="themeToggle" class="control-btn" title="تغيير المظهر">
             <i class="fas fa-moon"></i>
         </button>
+        <!-- Language Toggle Button -->
         <button id="langToggle" class="control-btn" title="تغيير اللغة">
             <i class="fas fa-language"></i>
         </button>
+        <!-- Music Control Button -->
+        <button id="musicToggle" class="control-btn music-btn" title="تشغيل أغنية شيرين - على بالي">
+            <i class="fas fa-music"></i>
+        </button>
     </div>
 
-    <!-- أشكال الخلفية المتحركة -->
-    <div id="shapes-container"></div>
-
+    <!-- Main Container -->
     <div class="container">
+        <!-- Main profile card -->
         <div class="card">
-            <!-- صورة الملف الشخصي لملاك -->
-            <div class="avatar-container">
-                <img src="malak.png" alt="Malak">
+            
+            <!-- Pure CSS Cute ribbons/bows at card corners -->
+            <div class="ribbon-bow left">
+                <div class="bow-loop-l"></div>
+                <div class="bow-loop-r"></div>
+                <div class="bow-knot"></div>
+                <div class="bow-tail-l"></div>
+                <div class="bow-tail-r"></div>
+            </div>
+            <div class="ribbon-bow right">
+                <div class="bow-loop-l"></div>
+                <div class="bow-loop-r"></div>
+                <div class="bow-knot"></div>
+                <div class="bow-tail-l"></div>
+                <div class="bow-tail-r"></div>
             </div>
 
-            <h1 id="el-name">ملاك مرجان</h1>
-            <p class="subtitle" id="el-subtitle">1 ديسمبر 2011 | <span class="highlight">14 عاماً من التألق</span></p>
-            
-            <div class="description">
-                <p id="el-desc1">فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.</p>
-                <p id="el-desc2">تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النقية التي تضيء حياة من حولها.</p>
+            <!-- Cute Interactive Bunny Mascot sitting on card -->
+            <div class="bunny-mascot" id="bunnyMascot">
+                <div class="bunny-love">💖</div>
+                <div class="bunny-ears">
+                    <div class="bunny-ear left"></div>
+                    <div class="bunny-ear right"></div>
+                </div>
+                <div class="bunny-face">
+                    <div class="bunny-eyes">
+                        <div class="bunny-eye left"></div>
+                        <div class="bunny-eye right"></div>
+                    </div>
+                    <div class="bunny-nose"></div>
+                    <div class="bunny-cheeks">
+                        <div class="bunny-cheek left"></div>
+                        <div class="bunny-cheek right"></div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Profile Avatar with animated glow ring -->
+            <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <div class="avatar-frame">
+                    <img src="malak.png" alt="Malak Profile Image">
+                </div>
+            </div>
+
+            <!-- Profile identity details -->
+            <h1 class="name" id="el-name">ملاك مرجان</h1>
             
-            <div class="buttons-container">
-                <!-- زر إنستغرام الرئيسي لملاك -->
-                <a href="https://www.instagram.com/mord_jaaane" target="_blank" class="instagram-btn">
+            <div class="badge-age" id="el-subtitle">
+                <i class="fas fa-cake-candles highlight"></i> 1 ديسمبر 2011 | 14 عاماً من التألق
+            </div>
+
+            <!-- Description box with glassmorphism -->
+            <div class="description-box">
+                <p id="el-desc1">فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.</p>
+                <p id="el-desc2">تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النبيلة التي تضيء حياة من حولها.</p>
+            </div>
+
+            <!-- Countdown Widget to upcoming birthday -->
+            <div class="countdown-widget">
+                <div class="countdown-title" id="countdown-title-text">
+                    <i class="fas fa-gift"></i> يوم ميلاد ملاك القادم ✨
+                </div>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <span class="countdown-val" id="cd-days">00</span>
+                        <span class="countdown-unit" id="unit-days">يوم</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-val" id="cd-hours">00</span>
+                        <span class="countdown-unit" id="unit-hours">ساعة</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-val" id="cd-minutes">00</span>
+                        <span class="countdown-unit" id="unit-mins">دقيقة</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-val" id="cd-seconds">00</span>
+                        <span class="countdown-unit" id="unit-secs">ثانية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Action Buttons -->
+            <div class="action-buttons">
+                <!-- Instagram button -->
+                <a href="https://www.instagram.com/mord_jaaane" target="_blank" class="primary-link insta-btn">
                     <i class="fab fa-instagram"></i> <span id="el-insta">تابعني على إنستغرام</span>
                 </a>
                 
-                <!-- زر الرسائل التفاعلية -->
-                <button id="magicBtn" class="magic-btn"><span id="el-btn">رسالة لملاك</span></button>
+                <!-- Magic messages toggle -->
+                <button id="magicBtn" class="primary-link magic-btn">
+                    <i class="fas fa-wand-magic-sparkles"></i> <span id="el-btn">رسالة لملاك</span>
+                </button>
             </div>
 
-            <p id="message" class="hidden-message"></p>
+            <!-- Floating card displaying positive messages -->
+            <div id="message" class="msg-display"></div>
 
-            <!-- قسم صديقاتي المضاف حديثاً -->
+            <!-- Best Friends section -->
             <div class="friends-section">
-                <h3 id="el-friends-title">صديقاتي المقربات 🤍</h3>
+                <h3 class="friends-title" id="el-friends-title">
+                    <i class="fas fa-heart"></i> صديقاتي المقربات 🤍
+                </h3>
                 <div class="friends-list">
-                    <!-- يسرى -->
-                    <div class="friend-item">
-                        <div class="friend-info">
+                    <!-- Friend 1: Yousra -->
+                    <div class="friend-card">
+                        <div class="friend-profile">
                             <i class="fas fa-heart"></i>
                             <span>يسرى</span>
                         </div>
-                        <a href="https://www.instagram.com/_yous.ra_yousra_" target="_blank" class="friend-link">Instagram</a>
+                        <a href="https://www.instagram.com/_yous.ra_yousra_" target="_blank" class="friend-action">Instagram</a>
                     </div>
-                    <!-- رانيا -->
-                    <div class="friend-item">
-                        <div class="friend-info">
+                    
+                    <!-- Friend 2: Rania -->
+                    <div class="friend-card">
+                        <div class="friend-profile">
                             <i class="fas fa-star"></i>
                             <span>رانيا</span>
                         </div>
-                        <a href="https://www.instagram.com/rania_4254" target="_blank" class="friend-link">Instagram</a>
+                        <a href="https://www.instagram.com/rania_4254" target="_blank" class="friend-action">Instagram</a>
                     </div>
-                    <!-- لين -->
-                    <div class="friend-item">
-                        <div class="friend-info">
-                            <i class="fas fa-sparkles"></i>
+                    
+                    <!-- Friend 3: Lyn -->
+                    <div class="friend-card">
+                        <div class="friend-profile">
+                            <i class="fas fa-wand-magic"></i>
                             <span>لين</span>
                         </div>
-                        <a href="https://www.instagram.com/lynhaffafa" target="_blank" class="friend-link">Instagram</a>
+                        <a href="https://www.instagram.com/lynhaffafa" target="_blank" class="friend-action">Instagram</a>
                     </div>
                 </div>
             </div>
@@ -428,17 +1075,25 @@
         </div>
     </div>
 
+    <!-- YouTube Iframe API Script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
     <script>
-        // === قاموس اللغات (العربية والإنجليزية) ===
+        // === Language translations dictionary ===
         const translations = {
             ar: {
                 name: "ملاك مرجان",
-                subtitle: "1 ديسمبر 2011 | <span class='highlight'>14 عاماً من التألق</span>",
+                subtitle: "<i class='fas fa-cake-candles highlight'></i> 1 ديسمبر 2011 | <span class='highlight'>14 عاماً من التألق</span>",
                 desc1: "فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.",
-                desc2: "تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النقية التي تضيء حياة من حولها.",
+                desc2: "تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النبيلة التي تضيء حياة من حولها.",
                 insta: "تابعني على إنستغرام",
                 btn: "رسالة لملاك",
-                friendsTitle: "صديقاتي المقربات 🤍",
+                friendsTitle: "<i class='fas fa-heart'></i> صديقاتي المقربات 🤍",
+                countdownTitle: "<i class='fas fa-gift'></i> يوم ميلاد ملاك القادم ✨",
+                unitDays: "يوم",
+                unitHours: "ساعة",
+                unitMins: "دقيقة",
+                unitSecs: "ثانية",
                 messages: [
                     "أخلاقكِ وجمالكِ بحجابكِ يجعلونكِ أميرة! 👑",
                     "وجهٌ حَسَن وأخلاقٌ أحسن.. تبارك الرحمن! ✨",
@@ -450,12 +1105,17 @@
             },
             en: {
                 name: "Malak Marjan",
-                subtitle: "December 1, 2011 | <span class='highlight'>14 Years of Brilliance</span>",
+                subtitle: "<i class='fas fa-cake-candles highlight'></i> December 1, 2011 | <span class='highlight'>14 Years of Brilliance</span>",
                 desc1: "A girl of utmost beauty, crowned by her hijab which adds to her light and radiance.",
-                desc2: "She combines good manners, refinement, and a pure spirit that brightens the lives of those around her.",
+                desc2: "She combines good manners, high refinement, and a noble spirit that brightens the lives of those around her.",
                 insta: "Follow on Instagram",
                 btn: "Message for Malak",
-                friendsTitle: "My Best Friends 🤍",
+                friendsTitle: "<i class='fas fa-heart'></i> My Best Friends 🤍",
+                countdownTitle: "<i class='fas fa-gift'></i> Malak's Next Birthday ✨",
+                unitDays: "Days",
+                unitHours: "Hrs",
+                unitMins: "Mins",
+                unitSecs: "Secs",
                 messages: [
                     "Your manners and beauty with your hijab make you a princess! 👑",
                     "A beautiful face and beautiful manners.. Blessed be! ✨",
@@ -469,44 +1129,132 @@
 
         let currentLang = 'ar';
 
-        // === عناصر الـ DOM ===
+        // === DOM Elements selection ===
         const themeToggleBtn = document.getElementById('themeToggle');
         const langToggleBtn = document.getElementById('langToggle');
+        const musicToggleBtn = document.getElementById('musicToggle');
         const htmlElement = document.documentElement;
         const msgElement = document.getElementById('message');
+        const bunnyMascot = document.getElementById('bunnyMascot');
 
-        // === تغيير المظهر (داكن / فاتح) ===
+        // === Load saved theme and language configurations ===
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggleBtn.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        if (localStorage.getItem('lang') === 'en') {
+            setLanguage('en');
+        }
+
+        // === Toggle light/dark modes ===
         themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const icon = themeToggleBtn.querySelector('i');
-            if(document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+            // Trigger particle type rebuild based on new theme
+            setupBackgroundParticles();
+        });
+
+        // === Language toggle logic ===
+        langToggleBtn.addEventListener('click', () => {
+            const nextLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(nextLang);
+        });
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            
+            htmlElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            htmlElement.setAttribute('lang', lang);
+
+            // Update interactive UI elements
+            document.getElementById('el-name').innerHTML = translations[lang].name;
+            document.getElementById('el-subtitle').innerHTML = translations[lang].subtitle;
+            document.getElementById('el-desc1').innerHTML = translations[lang].desc1;
+            document.getElementById('el-desc2').innerHTML = translations[lang].desc2;
+            document.getElementById('el-insta').innerHTML = translations[lang].insta;
+            document.getElementById('el-btn').innerHTML = translations[lang].btn;
+            document.getElementById('el-friends-title').innerHTML = translations[lang].friendsTitle;
+            document.getElementById('countdown-title-text').innerHTML = translations[lang].countdownTitle;
+            
+            document.getElementById('unit-days').innerText = translations[lang].unitDays;
+            document.getElementById('unit-hours').innerText = translations[lang].unitHours;
+            document.getElementById('unit-mins').innerText = translations[lang].unitMins;
+            document.getElementById('unit-secs').innerText = translations[lang].unitSecs;
+
+            // Reset dynamic message container
+            msgElement.classList.remove('show');
+        }
+
+        // === Background audio handling (YouTube Player API) ===
+        let player;
+        let isMusicPlaying = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '0',
+                width: '0',
+                videoId: 'v1rrjiOxiEY',
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'v1rrjiOxiEY',
+                    'volume': 100
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player is initialized and ready
+        }
+
+        musicToggleBtn.addEventListener('click', () => {
+            if (!player || typeof player.playVideo !== 'function') return;
+
+            if (!isMusicPlaying) {
+                player.playVideo();
+                isMusicPlaying = true;
+                musicToggleBtn.classList.add('playing');
+                spawnMusicNotes();
+            } else {
+                player.pauseVideo();
+                isMusicPlaying = false;
+                musicToggleBtn.classList.remove('playing');
             }
         });
 
-        // === تغيير اللغة (عربي / إنجليزي) ===
-        langToggleBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        // Rise cute music notes from the music toggle
+        function spawnMusicNotes() {
+            if (!isMusicPlaying) return;
             
-            htmlElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            htmlElement.setAttribute('lang', currentLang);
+            const btnRect = musicToggleBtn.getBoundingClientRect();
+            const note = document.createElement('span');
+            const noteIcons = ['♫', '♪', '♬', '♩'];
+            note.innerHTML = noteIcons[Math.floor(Math.random() * noteIcons.length)];
+            note.className = 'music-note';
+            note.style.left = (btnRect.left + btnRect.width / 2 + (Math.random() - 0.5) * 20) + 'px';
+            note.style.top = (btnRect.top + window.scrollY) + 'px';
+            
+            document.body.appendChild(note);
+            setTimeout(() => note.remove(), 1500);
 
-            document.getElementById('el-name').innerHTML = translations[currentLang].name;
-            document.getElementById('el-subtitle').innerHTML = translations[currentLang].subtitle;
-            document.getElementById('el-desc1').innerHTML = translations[currentLang].desc1;
-            document.getElementById('el-desc2').innerHTML = translations[currentLang].desc2;
-            document.getElementById('el-insta').innerHTML = translations[currentLang].insta;
-            document.getElementById('el-btn').innerHTML = translations[currentLang].btn;
-            document.getElementById('el-friends-title').innerHTML = translations[currentLang].friendsTitle;
+            // Recursively generate notes while music continues
+            setTimeout(spawnMusicNotes, 600);
+        }
 
-            msgElement.classList.remove('show');
-        });
-
-        // === الرسائل التفاعلية ===
+        // === Interactive Magic message button ===
         const magicBtn = document.getElementById('magicBtn');
 
         magicBtn.addEventListener('click', (e) => {
@@ -517,55 +1265,214 @@
             setTimeout(() => {
                 msgElement.innerText = randomMsg;
                 msgElement.classList.add('show');
-            }, 200);
+            }, 150);
 
-            createSparkles(e.clientX, e.clientY);
+            // Pop sparkle explosion from tap/click coordinates
+            createSparkleExplosion(e.clientX, e.clientY);
         });
 
-        // === النجوم التفاعلية ===
-        function createSparkles(x, y) {
-            for(let i = 0; i < 10; i++) {
-                let sparkle = document.createElement('div');
-                const icons = ['✨', '🌸', '🤍', '⭐'];
-                sparkle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-                sparkle.classList.add('sparkle');
+        // Spawn magical particle bursts
+        function createSparkleExplosion(x, y) {
+            const icons = ['✨', '🌸', '💖', '🤍', '⭐', '🎀'];
+            const count = 18;
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'sparkle-particle';
+                particle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
                 
-                const offsetX = (Math.random() - 0.5) * 100;
-                const offsetY = (Math.random() - 0.5) * 100;
+                // Absolute positioning relative to body
+                particle.style.left = x + 'px';
+                particle.style.top = (y + window.scrollY) + 'px';
                 
-                sparkle.style.left = (x + offsetX) + 'px';
-                sparkle.style.top = (y + offsetY) + 'px';
+                // Exploding trajectories
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 40 + Math.random() * 90;
+                const mx = Math.cos(angle) * distance;
+                const my = Math.sin(angle) * distance;
+                const rot = (Math.random() - 0.5) * 360;
                 
-                document.body.appendChild(sparkle);
-
-                setTimeout(() => {
-                    sparkle.remove();
-                }, 1000);
+                particle.style.setProperty('--mx', `${mx}px`);
+                particle.style.setProperty('--my', `${my}px`);
+                particle.style.setProperty('--rot', `${rot}deg`);
+                
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
             }
         }
 
-        // === خلفية الأشكال المتحركة ===
-        function createBackgroundShapes() {
-            const container = document.getElementById('shapes-container');
-            container.innerHTML = ''; // تنظيف الحاوية
-            const numShapes = 20;
+        // === Cursor heart trail effect ===
+        window.addEventListener('mousemove', (e) => {
+            // Limit creation frequency to prevent excessive overhead
+            if (Math.random() > 0.08) return; 
+            spawnCursorTrailParticle(e.clientX, e.clientY + window.scrollY);
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (Math.random() > 0.08) return;
+            const touch = e.touches[0];
+            spawnCursorTrailParticle(touch.clientX, touch.clientY + window.scrollY);
+        });
+
+        function spawnCursorTrailParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'sparkle-particle';
+            const trailIcons = ['💖', '✨', '🌸', '🤍', '⭐'];
+            particle.innerHTML = trailIcons[Math.floor(Math.random() * trailIcons.length)];
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
             
-            for(let i = 0; i < numShapes; i++) {
-                let shape = document.createElement('div');
-                shape.classList.add('floating-shape');
+            // Subtle slow drift
+            const mx = (Math.random() - 0.5) * 30;
+            const my = -30 - Math.random() * 35;
+            const rot = (Math.random() - 0.5) * 180;
+            
+            particle.style.setProperty('--mx', `${mx}px`);
+            particle.style.setProperty('--my', `${my}px`);
+            particle.style.setProperty('--rot', `${rot}deg`);
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 1000);
+        }
+
+        // Mascot active heart burst
+        bunnyMascot.addEventListener('click', (e) => {
+            const rect = bunnyMascot.getBoundingClientRect();
+            createSparkleExplosion(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        });
+
+        // === Birthday Countdown Widget calculations ===
+        function updateBirthdayCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            
+            // Birthday is December 1st
+            let bday = new Date(currentYear, 11, 1); // 11 is December (0-indexed)
+            
+            // If birthday already passed this year, calculate for next year
+            if (now > bday) {
+                bday = new Date(currentYear + 1, 11, 1);
+            }
+            
+            const difference = bday - now;
+            
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        // Run countdown timer
+        updateBirthdayCountdown();
+        setInterval(updateBirthdayCountdown, 1000);
+
+        // === Hardware Accelerated HTML5 Canvas background particle system ===
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        const maxParticles = 30;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20 - Math.random() * 50;
+                this.size = Math.random() * 12 + 6;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 1;
+                this.rot = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 0.5) * 1.5;
+                // Light mode is sakura petal, dark mode is glowing star
+                this.isLight = !document.body.classList.contains('dark-mode');
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rot += this.rotSpeed;
+
+                if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rot * Math.PI / 180);
                 
-                let size = Math.random() * 80 + 20;
-                shape.style.width = size + 'px';
-                shape.style.height = size + 'px';
-                shape.style.left = Math.random() * 100 + 'vw';
-                shape.style.animationDuration = (Math.random() * 10 + 8) + 's';
-                shape.style.animationDelay = (Math.random() * 5) + 's';
-                
-                container.appendChild(shape);
+                if (this.isLight) {
+                    // Draw beautiful soft pink sakura petal
+                    ctx.fillStyle = 'rgba(255, 182, 198, 0.7)';
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size / 1.7, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Center indentation/line of petal
+                    ctx.strokeStyle = 'rgba(255, 117, 140, 0.4)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(-this.size, 0);
+                    ctx.lineTo(this.size, 0);
+                    ctx.stroke();
+                } else {
+                    // Draw bright glowing cosmic star
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = 'rgba(244, 114, 182, 0.8)';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                    
+                    // 4 pointed star
+                    ctx.beginPath();
+                    ctx.moveTo(0, -this.size);
+                    ctx.quadraticCurveTo(0, 0, this.size, 0);
+                    ctx.quadraticCurveTo(0, 0, 0, this.size);
+                    ctx.quadraticCurveTo(0, 0, -this.size, 0);
+                    ctx.quadraticCurveTo(0, 0, 0, -this.size);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.restore();
             }
         }
 
-        createBackgroundShapes();
+        function setupBackgroundParticles() {
+            particles = [];
+            for (let i = 0; i < maxParticles; i++) {
+                const p = new Particle();
+                // Randomize heights initially so they don't fall as a single flat wave
+                p.y = Math.random() * canvas.height; 
+                particles.push(p);
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Initialize and trigger canvas loops
+        setupBackgroundParticles();
+        animateParticles();
     </script>
 </body>
 </html>
