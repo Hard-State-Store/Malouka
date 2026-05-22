@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملاك مرجان - Malak Marjan</title>
+    <!-- استدعاء خطوط عربية وإنجليزية أنيقة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* الإعدادات الأساسية (الوضع الفاتح الافتراضي) */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            --card-bg: rgba(255, 255, 255, 0.45);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --text-main: #333;
+            --text-title: #6a1b9a;
+            --text-subtitle: #555;
+            --text-desc: #444;
+            --desc-bg: rgba(255, 255, 255, 0.6);
+            --highlight: #9c27b0;
+            --btn-control-bg: rgba(255, 255, 255, 0.4);
+            --btn-control-text: #333;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --friend-bg: rgba(255, 255, 255, 0.5);
+        }
+
+        /* متغيرات الوضع الداكن (Dark Mode) */
+        body.dark-mode {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-title: #c084fc;
+            --text-subtitle: #cbd5e1;
+            --text-desc: #e2e8f0;
+            --desc-bg: rgba(0, 0, 0, 0.4);
+            --highlight: #e879f9;
+            --btn-control-bg: rgba(0, 0, 0, 0.5);
+            --btn-control-text: #f8fafc;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --friend-bg: rgba(30, 41, 59, 0.5);
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 0;
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.5s ease;
+        }
+
+        /* أزرار التحكم (اللغة والوضع الداكن) */
+        .controls {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+            transition: all 0.5s ease;
+        }
+
+        html[dir="ltr"] .controls {
+            right: auto;
+            left: 25px;
+        }
+
+        .control-btn {
+            background: var(--btn-control-bg);
+            border: 1px solid var(--card-border);
+            color: var(--btn-control-text);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* حاوية المحتوى */
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* تصميم البطاقة الرئيسية */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px var(--shadow-color);
+            max-width: 480px;
+            margin: 0 auto;
+            transition: all 0.5s ease;
+        }
+
+        html[dir="ltr"] .card {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* صورة الملف الشخصي */
+        .avatar-container {
+            width: 150px;
+            height: 150px;
+            margin: -80px auto 20px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 8px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            position: relative;
+        }
+
+        body.dark-mode .avatar-container {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* النصوص والعناوين */
+        .card h1 {
+            font-family: 'Amiri', serif;
+            color: var(--text-title);
+            font-size: 2.8rem;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        html[dir="ltr"] .card h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-subtitle);
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-desc);
+            background: var(--desc-bg);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight {
+            color: var(--highlight);
+            font-weight: bold;
+        }
+
+        /* قسم الصديقات */
+        .friends-section {
+            margin-top: 30px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 20px;
+        }
+
+        .friends-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-title);
+            margin-bottom: 15px;
+        }
+
+        .friends-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .friend-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--friend-bg);
+            padding: 10px 20px;
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+        }
+
+        .friend-item:hover {
+            transform: scale(1.02);
+            background: var(--desc-bg);
+        }
+
+        .friend-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .friend-info i {
+            color: var(--highlight);
+        }
+
+        .friend-link {
+            color: white;
+            background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .friend-link:hover {
+            opacity: 0.9;
+        }
+
+        /* تصميم زر إنستغرام الرئيسي لملاك */
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
+            margin-bottom: 15px;
+            width: 80%;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* الأزرار التفاعلية */
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .magic-btn {
+            background: linear-gradient(45deg, #b388ff, #8c9eff);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(140, 158, 255, 0.4);
+            width: 80%;
+        }
+
+        .magic-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #8c9eff, #b388ff);
+        }
+
+        /* الرسالة التفاعلية */
+        .hidden-message {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-title);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease-in-out;
+            min-height: 40px;
+        }
+
+        .hidden-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تأثيرات النجوم والخلفية */
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 100;
+            animation: sparkleAnim 1s forwards;
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+        }
+
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float infinite linear;
+            pointer-events: none;
+            backdrop-filter: blur(5px);
+        }
+
+        body.dark-mode .floating-shape {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(2) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- أزرار التحكم -->
+    <div class="controls">
+        <button id="themeToggle" class="control-btn" title="تغيير المظهر">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button id="langToggle" class="control-btn" title="تغيير اللغة">
+            <i class="fas fa-language"></i>
+        </button>
+    </div>
+
+    <!-- أشكال الخلفية المتحركة -->
+    <div id="shapes-container"></div>
+
+    <div class="container">
+        <div class="card">
+            <!-- صورة الملف الشخصي لملاك -->
+            <div class="avatar-container">
+                <img src="malak.png" alt="Malak">
+            </div>
+
+            <h1 id="el-name">ملاك مرجان</h1>
+            <p class="subtitle" id="el-subtitle">1 ديسمبر 2011 | <span class="highlight">14 عاماً من التألق</span></p>
+            
+            <div class="description">
+                <p id="el-desc1">فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.</p>
+                <p id="el-desc2">تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النقية التي تضيء حياة من حولها.</p>
+            </div>
+            
+            <div class="buttons-container">
+                <!-- زر إنستغرام الرئيسي لملاك -->
+                <a href="https://www.instagram.com/mord_jaaane" target="_blank" class="instagram-btn">
+                    <i class="fab fa-instagram"></i> <span id="el-insta">تابعني على إنستغرام</span>
+                </a>
+                
+                <!-- زر الرسائل التفاعلية -->
+                <button id="magicBtn" class="magic-btn"><span id="el-btn">رسالة لملاك</span></button>
+            </div>
+
+            <p id="message" class="hidden-message"></p>
+
+            <!-- قسم صديقاتي المضاف حديثاً -->
+            <div class="friends-section">
+                <h3 id="el-friends-title">صديقاتي المقربات 🤍</h3>
+                <div class="friends-list">
+                    <!-- يسرى -->
+                    <div class="friend-item">
+                        <div class="friend-info">
+                            <i class="fas fa-heart"></i>
+                            <span>يسرى</span>
+                        </div>
+                        <a href="https://www.instagram.com/_yous.ra_yousra_" target="_blank" class="friend-link">Instagram</a>
+                    </div>
+                    <!-- رانيا -->
+                    <div class="friend-item">
+                        <div class="friend-info">
+                            <i class="fas fa-star"></i>
+                            <span>رانيا</span>
+                        </div>
+                        <a href="https://www.instagram.com/rania_4254" target="_blank" class="friend-link">Instagram</a>
+                    </div>
+                    <!-- لين -->
+                    <div class="friend-item">
+                        <div class="friend-info">
+                            <i class="fas fa-sparkles"></i>
+                            <span>لين</span>
+                        </div>
+                        <a href="https://www.instagram.com/lynhaffafa" target="_blank" class="friend-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // === قاموس اللغات (العربية والإنجليزية) ===
+        const translations = {
+            ar: {
+                name: "ملاك مرجان",
+                subtitle: "1 ديسمبر 2011 | <span class='highlight'>14 عاماً من التألق</span>",
+                desc1: "فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.",
+                desc2: "تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النقية التي تضيء حياة من حولها.",
+                insta: "تابعني على إنستغرام",
+                btn: "رسالة لملاك",
+                friendsTitle: "صديقاتي المقربات 🤍",
+                messages: [
+                    "أخلاقكِ وجمالكِ بحجابكِ يجعلونكِ أميرة! 👑",
+                    "وجهٌ حَسَن وأخلاقٌ أحسن.. تبارك الرحمن! ✨",
+                    "14 عاماً من الأدب، الرقة، والجمال! 🌸",
+                    "ديسمبر فخور جداً بأنكِ من مواليده! ❄️",
+                    "حجابكِ تاجٌ يزيدكِ جمالاً فوق جمالك! 🤍",
+                    "ابتسامتكِ وأدبكِ هما سر روعتكِ! 🌟"
+                ]
+            },
+            en: {
+                name: "Malak Marjan",
+                subtitle: "December 1, 2011 | <span class='highlight'>14 Years of Brilliance</span>",
+                desc1: "A girl of utmost beauty, crowned by her hijab which adds to her light and radiance.",
+                desc2: "She combines good manners, refinement, and a pure spirit that brightens the lives of those around her.",
+                insta: "Follow on Instagram",
+                btn: "Message for Malak",
+                friendsTitle: "My Best Friends 🤍",
+                messages: [
+                    "Your manners and beauty with your hijab make you a princess! 👑",
+                    "A beautiful face and beautiful manners.. Blessed be! ✨",
+                    "14 years of politeness, elegance, and beauty! 🌸",
+                    "December is so proud you were born in it! ❄️",
+                    "Your hijab is a crown that adds beauty to your beauty! 🤍",
+                    "Your smile and manners are the secret to your awesomeness! 🌟"
+                ]
+            }
+        };
+
+        let currentLang = 'ar';
+
+        // === عناصر الـ DOM ===
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const langToggleBtn = document.getElementById('langToggle');
+        const htmlElement = document.documentElement;
+        const msgElement = document.getElementById('message');
+
+        // === تغيير المظهر (داكن / فاتح) ===
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggleBtn.querySelector('i');
+            if(document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // === تغيير اللغة (عربي / إنجليزي) ===
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            htmlElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            htmlElement.setAttribute('lang', currentLang);
+
+            document.getElementById('el-name').innerHTML = translations[currentLang].name;
+            document.getElementById('el-subtitle').innerHTML = translations[currentLang].subtitle;
+            document.getElementById('el-desc1').innerHTML = translations[currentLang].desc1;
+            document.getElementById('el-desc2').innerHTML = translations[currentLang].desc2;
+            document.getElementById('el-insta').innerHTML = translations[currentLang].insta;
+            document.getElementById('el-btn').innerHTML = translations[currentLang].btn;
+            document.getElementById('el-friends-title').innerHTML = translations[currentLang].friendsTitle;
+
+            msgElement.classList.remove('show');
+        });
+
+        // === الرسائل التفاعلية ===
+        const magicBtn = document.getElementById('magicBtn');
+
+        magicBtn.addEventListener('click', (e) => {
+            const msgs = translations[currentLang].messages;
+            const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+            
+            msgElement.classList.remove('show');
+            setTimeout(() => {
+                msgElement.innerText = randomMsg;
+                msgElement.classList.add('show');
+            }, 200);
+
+            createSparkles(e.clientX, e.clientY);
+        });
+
+        // === النجوم التفاعلية ===
+        function createSparkles(x, y) {
+            for(let i = 0; i < 10; i++) {
+                let sparkle = document.createElement('div');
+                const icons = ['✨', '🌸', '🤍', '⭐'];
+                sparkle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                sparkle.classList.add('sparkle');
+                
+                const offsetX = (Math.random() - 0.5) * 100;
+                const offsetY = (Math.random() - 0.5) * 100;
+                
+                sparkle.style.left = (x + offsetX) + 'px';
+                sparkle.style.top = (y + offsetY) + 'px';
+                
+                document.body.appendChild(sparkle);
+
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+        }
+
+        // === خلفية الأشكال المتحركة ===
+        function createBackgroundShapes() {
+            const container = document.getElementById('shapes-container');
+            container.innerHTML = ''; // تنظيف الحاوية
+            const numShapes = 20;
+            
+            for(let i = 0; i < numShapes; i++) {
+                let shape = document.createElement('div');
+                shape.classList.add('floating-shape');
+                
+                let size = Math.random() * 80 + 20;
+                shape.style.width = size + 'px';
+                shape.style.height = size + 'px';
+                shape.style.left = Math.random() * 100 + 'vw';
+                shape.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                shape.style.animationDelay = (Math.random() * 5) + 's';
+                
+                container.appendChild(shape);
+            }
+        }
+
+        createBackgroundShapes();
+    </script>
+</body>
+</html>
