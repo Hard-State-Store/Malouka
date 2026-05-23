@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملاك مرجان - Malak Marjan</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="malak.png">
+    <!-- Google Fonts for premium bilingual support -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;800&family=Outfit:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           CSS Variables & Themes (Feminine & Magical)
+        ========================================= */
+        :root {
+            /* Light Mode - Sakura Glass Theme */
+            --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 30%, #fbc2eb 70%, #a6c1ee 100%);
+            --card-bg: rgba(255, 255, 255, 0.45);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --text-main: #4a2840;
+            --text-title: #b83280;
+            --text-subtitle: #863063;
+            --text-desc: #5f3750;
+            --desc-bg: rgba(255, 255, 255, 0.65);
+            --highlight: #d53f8c;
+            --btn-control-bg: rgba(255, 255, 255, 0.5);
+            --btn-control-text: #b83280;
+            --shadow-color: rgba(184, 50, 128, 0.15);
+            --friend-bg: rgba(255, 255, 255, 0.55);
+            --neon-glow: 0 0 15px rgba(213, 63, 140, 0.3);
+            
+            --bow-color: #ff85a2;
+            --bow-shade: #f75c81;
+            
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --font-ar: 'Tajawal', 'Cairo', sans-serif;
+            --font-en: 'Outfit', 'Poppins', sans-serif;
+        }
+
+        body.dark-mode {
+            /* Dark Mode - Amethyst & Rose Glow */
+            --bg-gradient: linear-gradient(135deg, #090613 0%, #150f28 35%, #2a113b 70%, #06040b 100%);
+            --card-bg: rgba(18, 14, 33, 0.65);
+            --card-border: rgba(255, 133, 162, 0.25);
+            --text-main: #fce7f3;
+            --text-title: #f472b6;
+            --text-subtitle: #c084fc;
+            --text-desc: #e9d5ff;
+            --desc-bg: rgba(10, 7, 20, 0.55);
+            --highlight: #f472b6;
+            --btn-control-bg: rgba(30, 20, 50, 0.6);
+            --btn-control-text: #fce7f3;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --friend-bg: rgba(30, 24, 52, 0.65);
+            --neon-glow: 0 0 25px rgba(244, 114, 182, 0.45);
+            
+            --bow-color: #f472b6;
+            --bow-shade: #db2777;
+        }
+
+        /* =========================================
+           Global Settings
+        ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html[dir="rtl"] {
+            font-family: var(--font-ar);
+        }
+        
+        html[dir="ltr"] {
+            font-family: var(--font-en);
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.8s ease, color 0.4s ease;
+        }
+
+        /* Canvas particles layer */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Container & Cards spacing */
+        .container {
+            width: 100%;
+            max-width: 520px;
+            z-index: 5;
+            position: relative;
+            animation: cardFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cardFadeIn {
+            0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* =========================================
+           Floating Control Panel & Music Player
+        ========================================= */
+        .controls {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        html[dir="ltr"] .controls {
+            right: auto;
+            left: 25px;
+        }
+
+        .control-btn {
+            background: var(--btn-control-bg);
+            border: 1.5px solid var(--card-border);
+            color: var(--btn-control-text);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.12) translateY(-2px);
+            border-color: var(--highlight);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Music button active spin animation */
+        .music-btn.playing i {
+            animation: musicRotate 4s linear infinite;
+            color: var(--highlight);
+        }
+
+        @keyframes musicRotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Little musical notes rising from button */
+        .music-note {
+            position: absolute;
+            color: var(--highlight);
+            pointer-events: none;
+            font-size: 12px;
+            animation: riseNote 1.5s ease-out forwards;
+            z-index: 101;
+        }
+
+        @keyframes riseNote {
+            0% { opacity: 1; transform: translateY(0) scale(0.8) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-50px) scale(1.4) rotate(45deg); }
+        }
+
+        /* =========================================
+           Sleek Glassmorphic Card
+        ========================================= */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid var(--card-border);
+            padding: 50px 30px 40px;
+            border-radius: 35px;
+            box-shadow: 0 25px 55px var(--shadow-color);
+            position: relative;
+            transition: var(--transition);
+            margin-top: 110px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 75px var(--shadow-color), var(--neon-glow);
+        }
+
+        /* Decorative Pink Bows on Corners */
+        .ribbon-bow {
+            position: absolute;
+            top: -12px;
+            width: 50px;
+            height: 30px;
+            z-index: 12;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .card:hover .ribbon-bow {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .ribbon-bow.left {
+            left: 20px;
+        }
+        .ribbon-bow.right {
+            right: 20px;
+            transform: scaleX(-1);
+        }
+        .card:hover .ribbon-bow.right {
+            transform: scaleX(-1) scale(1.15) rotate(5deg);
+        }
+
+        /* CSS Bow Drawing */
+        .bow-knot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: var(--bow-color);
+            border-radius: 50%;
+            top: 8px;
+            left: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 3;
+        }
+        .bow-loop-l, .bow-loop-r {
+            position: absolute;
+            width: 22px;
+            height: 18px;
+            border: 3px solid var(--bow-shade);
+            background: var(--bow-color);
+            border-radius: 50% 50% 10% 50%;
+            top: 5px;
+        }
+        .bow-loop-l {
+            left: 0;
+            transform: rotate(-15deg);
+        }
+        .bow-loop-r {
+            right: 0;
+            transform: scaleX(-1) rotate(-15deg);
+            left: auto;
+        }
+        .bow-tail-l, .bow-tail-r {
+            position: absolute;
+            width: 6px;
+            height: 20px;
+            background: var(--bow-color);
+            top: 18px;
+            border-radius: 2px;
+            z-index: 1;
+        }
+        .bow-tail-l {
+            left: 15px;
+            transform: rotate(25deg);
+        }
+        .bow-tail-r {
+            right: 15px;
+            transform: rotate(-25deg);
+        }
+
+        /* =========================================
+           Avatar & Glowing Rings
+        ========================================= */
+        .avatar-container {
+            width: 160px;
+            height: 160px;
+            margin: -110px auto 25px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animated Glowing Ring */
+        .avatar-glow {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--highlight), #a6c1ee, var(--bow-color), var(--highlight));
+            background-size: 300% 300%;
+            z-index: -1;
+            animation: borderGlow 6s linear infinite;
+            opacity: 0.85;
+            box-shadow: var(--neon-glow);
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .avatar-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+            padding: 6px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .avatar-frame {
+            background: #18142c;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .avatar-container:hover .avatar-frame img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* =========================================
+           Cute Bunny Mascot (Interactive CSS)
+        ========================================= */
+        .bunny-mascot {
+            position: absolute;
+            top: -72px;
+            left: 30px;
+            width: 60px;
+            height: 75px;
+            z-index: 8;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        html[dir="ltr"] .bunny-mascot {
+            left: auto;
+            right: 30px;
+        }
+
+        .bunny-mascot:hover {
+            transform: translateY(-8px) scale(1.08);
+        }
+
+        /* Bunny Ears */
+        .bunny-ear {
+            position: absolute;
+            width: 14px;
+            height: 38px;
+            background: #ffffff;
+            border-radius: 50% 50% 10% 10%;
+            border: 2px solid var(--text-main);
+            top: 2px;
+            transition: var(--transition);
+        }
+        .bunny-ear::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 26px;
+            background: #ffb3c6;
+            border-radius: 50%;
+            top: 4px;
+            left: 2px;
+        }
+        .bunny-ear.left {
+            left: 12px;
+            transform: rotate(-12deg);
+            transform-origin: bottom right;
+        }
+        .bunny-ear.right {
+            right: 12px;
+            transform: rotate(12deg);
+            transform-origin: bottom left;
+        }
+
+        /* Ear wiggle on mascot hover */
+        .bunny-mascot:hover .bunny-ear.left {
+            animation: wiggleLeftEar 0.6s ease infinite alternate;
+        }
+        .bunny-mascot:hover .bunny-ear.right {
+            animation: wiggleRightEar 0.6s ease infinite alternate;
+        }
+
+        @keyframes wiggleLeftEar {
+            0% { transform: rotate(-12deg); }
+            100% { transform: rotate(-25deg); }
+        }
+        @keyframes wiggleRightEar {
+            0% { transform: rotate(12deg); }
+            100% { transform: rotate(25deg); }
+        }
+
+        /* Bunny Face */
+        .bunny-face {
+            position: absolute;
+            width: 44px;
+            height: 36px;
+            background: #ffffff;
+            border-radius: 50% 50% 45% 45%;
+            border: 2px solid var(--text-main);
+            bottom: 4px;
+            left: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .bunny-eye {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--text-main);
+            border-radius: 50%;
+            top: 14px;
+            transition: var(--transition);
+        }
+        .bunny-eye.left { left: 10px; }
+        .bunny-eye.right { right: 10px; }
+
+        /* Winking bunny on hover */
+        .bunny-mascot:hover .bunny-eye.right {
+            height: 2px;
+            border-radius: 0;
+            transform: translateY(2px);
+        }
+
+        .bunny-nose {
+            position: absolute;
+            width: 4px;
+            height: 3px;
+            background: #ff85a2;
+            border-radius: 50%;
+            top: 17px;
+            left: 20px;
+        }
+
+        .bunny-cheek {
+            position: absolute;
+            width: 8px;
+            height: 5px;
+            background: #ffb3c6;
+            border-radius: 50%;
+            top: 19px;
+            opacity: 0.85;
+        }
+        .bunny-cheek.left { left: 5px; }
+        .bunny-cheek.right { right: 5px; }
+
+        /* Sparkle pop effect above bunny */
+        .bunny-love {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+        .bunny-mascot:active .bunny-love {
+            opacity: 1;
+            transform: translateY(-15px) scale(1.3);
+        }
+
+        /* =========================================
+           Profile Info & Typography
+        ========================================= */
+        h1.name {
+            font-family: 'Amiri', 'Cairo', serif;
+            color: var(--text-title);
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin: 5px 0 10px;
+            transition: color 0.3s ease;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        html[dir="ltr"] h1.name {
+            font-family: var(--font-en);
+            font-weight: 800;
+        }
+
+        .badge-age {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: var(--desc-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-subtitle);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: var(--transition);
+        }
+
+        .badge-age:hover {
+            transform: scale(1.05);
+            background: var(--card-bg);
+            border-color: var(--highlight);
+        }
+
+        .badge-age .highlight {
+            color: var(--highlight);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; text-shadow: 0 0 8px var(--highlight); }
+            100% { opacity: 0.8; }
+        }
+
+        .description-box {
+            font-size: 1.12rem;
+            line-height: 1.85;
+            color: var(--text-desc);
+            background: var(--desc-bg);
+            border: 1.5px solid var(--card-border);
+            padding: 20px;
+            border-radius: 22px;
+            margin-bottom: 25px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+
+        .description-box p {
+            margin-bottom: 10px;
+        }
+        .description-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .description-box:hover {
+            background: var(--card-bg);
+            border-color: var(--highlight);
+            transform: scale(1.01);
+        }
+
+        /* =========================================
+           Magical Countdown Widget
+        ========================================= */
+        .countdown-widget {
+            background: var(--desc-bg);
+            border: 2px dashed var(--card-border);
+            padding: 20px 15px;
+            border-radius: 24px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-widget:hover {
+            border-style: solid;
+            border-color: var(--highlight);
+            background: var(--card-bg);
+            box-shadow: var(--neon-glow);
+        }
+
+        .countdown-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Birthday present shaking on hover */
+        .countdown-title i {
+            color: var(--highlight);
+            animation: shakeGift 2s ease infinite;
+        }
+
+        @keyframes shakeGift {
+            0%, 100% { transform: rotate(0); }
+            15% { transform: rotate(-10deg) scale(1.1); }
+            30% { transform: rotate(10deg) scale(1.1); }
+            45% { transform: rotate(-5deg) scale(1.1); }
+            60% { transform: rotate(5deg) scale(1.1); }
+            75% { transform: rotate(0); }
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 5px;
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .countdown-item {
+            background: rgba(10, 7, 20, 0.4);
+        }
+
+        .countdown-item:hover {
+            background: var(--highlight);
+            color: white;
+            border-color: var(--highlight);
+            transform: scale(1.08);
+        }
+
+        .countdown-item:hover .countdown-val {
+            color: white;
+        }
+
+        .countdown-val {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-title);
+            font-family: var(--font-en);
+            line-height: 1.2;
+        }
+
+        .countdown-unit {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 4px;
+            opacity: 0.85;
+        }
+
+        /* =========================================
+           Buttons & Links Styling
+        ========================================= */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .primary-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            width: 90%;
+            max-width: 320px;
+            padding: 14px 25px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(219, 39, 119, 0.35);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* Girly Pink Gradient for main insta button */
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 10px 25px rgba(220, 39, 67, 0.35);
+        }
+
+        /* Sparkle button */
+        .magic-btn {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.35);
+        }
+
+        .primary-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .primary-link:hover::before {
+            left: 100%;
+        }
+
+        .primary-link:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.45), var(--neon-glow);
+        }
+
+        .primary-link:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        /* Dynamic Hidden Message */
+        .msg-display {
+            margin-top: 10px;
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: var(--text-title);
+            background: var(--desc-bg);
+            border: 2.5px solid var(--card-border);
+            padding: 18px 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+            display: none;
+        }
+
+        .msg-display.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+            display: block;
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            70% { transform: scale(0.9); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* =========================================
+           Best Friends Section (Precious Glass)
+        ========================================= */
+        .friends-section {
+            margin-top: 35px;
+            border-top: 2px dashed var(--card-border);
+            padding-top: 25px;
+        }
+
+        .friends-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .friends-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .friend-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--friend-bg);
+            border: 1.5px solid var(--card-border);
+            padding: 14px 22px;
+            border-radius: 20px;
+            transition: var(--transition);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.02);
+        }
+
+        .friend-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: var(--card-bg);
+            border-color: var(--highlight);
+            box-shadow: 0 10px 25px var(--shadow-color);
+        }
+
+        .friend-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-main);
+        }
+
+        .friend-profile i {
+            color: var(--highlight);
+            transition: var(--transition);
+        }
+
+        .friend-card:hover .friend-profile i {
+            transform: scale(1.25) rotate(15deg);
+        }
+
+        .friend-action {
+            color: white;
+            background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            box-shadow: 0 5px 12px rgba(220,39,67,0.25);
+            transition: var(--transition);
+        }
+
+        .friend-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(220,39,67,0.4);
+            opacity: 0.95;
+        }
+
+        /* =========================================
+           Cursor Trails & Particle Styles
+        ========================================= */
+        .sparkle-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1000;
+            animation: particleFly 1s cubic-bezier(0.1, 0.8, 0.25, 1) forwards;
+            font-size: 20px;
+            will-change: transform, opacity;
+        }
+
+        @keyframes particleFly {
+            0% { transform: translate(0, 0) scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--mx), var(--my)) scale(1.4) rotate(var(--rot)); opacity: 0; }
+        }
+
+        /* Hidden YouTube Iframe */
+        #yt-player-container {
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Responsive Adapts */
+        @media (max-width: 480px) {
+            body {
+                padding: 45px 15px 30px;
+            }
+            .controls {
+                top: 15px;
+                right: 15px;
+            }
+            html[dir="ltr"] .controls {
+                left: 15px;
+            }
+            .card {
+                padding: 45px 20px 30px;
+                border-radius: 28px;
+            }
+            h1.name {
+                font-size: 2.25rem;
+            }
+            .countdown-grid {
+                gap: 6px;
+            }
+            .countdown-val {
+                font-size: 1.2rem;
+            }
+            .countdown-unit {
+                font-size: 0.68rem;
+            }
+            .primary-link {
+                width: 100%;
+                font-size: 1.05rem;
+                padding: 12px 20px;
+            }
+            /* إخفاء زر الموسيقى على الجوال - المتصفحات تمنع التشغيل التلقائي */
+            #musicToggle {
+                display: none;
+            }
+        }
+
+        /* =========================================
+           Glassmorphic Navigation Bar
+        ========================================= */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 2px solid var(--card-border);
+            padding: 8px;
+            border-radius: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 15px 35px var(--shadow-color);
+            position: relative;
+            z-index: 20;
+            gap: 5px;
+            width: 100%;
+            animation: navSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        @keyframes navSlideDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: none;
+            color: var(--text-subtitle);
+            padding: 10px 14px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: var(--transition);
+            position: relative;
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .nav-tab i {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .nav-tab:hover {
+            color: var(--highlight);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        body.dark-mode .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-tab.active {
+            color: white;
+            background: var(--highlight);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .nav-tab.active i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* =========================================
+           Tab content transition system
+        ========================================= */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: tabEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes tabEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* =========================================
+           About Me grid & list styles
+        ========================================= */
+        .about-intro {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-desc);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .about-item {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1.5px solid var(--card-border);
+            padding: 18px 15px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 6px 15px var(--shadow-color);
+        }
+        
+        body.dark-mode .about-item {
+            background: rgba(10, 7, 20, 0.4);
+        }
+
+        .about-item:hover {
+            transform: translateY(-5px);
+            background: var(--card-bg);
+            border-color: var(--highlight);
+            box-shadow: var(--neon-glow);
+        }
+
+        .about-icon {
+            font-size: 1.8rem;
+            color: var(--highlight);
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .about-item:hover .about-icon {
+            transform: scale(1.25) rotate(10deg);
+        }
+
+        .about-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-subtitle);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .about-value {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-title);
+        }
+
+        /* =========================================
+           Sleek Glassmorphic Contact Form
+        ========================================= */
+        .contact-intro {
+            font-size: 1.1rem;
+            color: var(--text-desc);
+            text-align: center;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: right;
+        }
+
+        html[dir="ltr"] .form-group {
+            text-align: left;
+        }
+
+        .form-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-subtitle);
+            padding-right: 5px;
+        }
+
+        .form-input, .form-textarea {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1.5px solid var(--card-border);
+            border-radius: 16px;
+            padding: 12px 16px;
+            font-size: 1rem;
+            color: var(--text-main);
+            font-family: inherit;
+            transition: var(--transition);
+            outline: none;
+            width: 100%;
+        }
+
+        body.dark-mode .form-input,
+        body.dark-mode .form-textarea {
+            background: rgba(10, 7, 20, 0.4);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            background: var(--card-bg);
+            border-color: var(--highlight);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-1px);
+        }
+
+        .form-textarea {
+            resize: none;
+            height: 110px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.35);
+            margin-top: 5px;
+            align-self: center;
+        }
+
+        /* =========================================
+           Custom Cute Success Alert popup
+        ========================================= */
+        .alert-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid var(--highlight);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.25), var(--neon-glow);
+            z-index: 2000;
+            text-align: center;
+            max-width: 90%;
+            width: 380px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .alert-popup.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .alert-icon {
+            font-size: 3.5rem;
+            color: var(--highlight);
+            margin-bottom: 15px;
+            animation: bounceAlert 1s infinite alternate;
+        }
+
+        @keyframes bounceAlert {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        .alert-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-title);
+            margin-bottom: 10px;
+        }
+
+        .alert-text {
+            font-size: 1.05rem;
+            color: var(--text-desc);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .alert-close {
+            background: var(--highlight);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(213, 63, 140, 0.3);
+        }
+
+        .alert-close:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(213, 63, 140, 0.45);
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 6, 19, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 480px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .nav-bar {
+                padding: 6px;
+                border-radius: 18px;
+                margin-bottom: 15px;
+                gap: 3px;
+            }
+            .nav-tab {
+                padding: 8px 6px;
+                font-size: 0.8rem;
+                gap: 4px;
+                border-radius: 12px;
+            }
+            .nav-tab i {
+                font-size: 0.9rem;
+            }
+            .card {
+                margin-top: 100px;
+                padding: 40px 18px 25px;
+            }
+            .bunny-mascot {
+                top: -65px;
+                left: 20px;
+            }
+            html[dir="ltr"] .bunny-mascot {
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            /* On extremely narrow screens, hide the text to only show clean icons */
+            .nav-tab span {
+                display: none;
+            }
+            .nav-tab {
+                padding: 10px;
+                border-radius: 50%;
+            }
+            .nav-tab i {
+                font-size: 1.15rem;
+            }
+            .card {
+                margin-top: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas for floating particles (Sakura & Stars) -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Hidden Container for YouTube Background Audio -->
+    <div id="yt-player-container">
+        <div id="yt-player"></div>
+    </div>
+
+    <!-- Top floating navigation controls -->
+    <div class="controls">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="control-btn" title="تغيير المظهر">
+            <i class="fas fa-moon"></i>
+        </button>
+        <!-- Language Toggle Button -->
+        <button id="langToggle" class="control-btn" title="تغيير اللغة">
+            <i class="fas fa-language"></i>
+        </button>
+        <!-- Music Control Button -->
+        <button id="musicToggle" class="control-btn music-btn" title="تشغيل أغنية شيرين - على بالي">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Premium Glass Navigation Bar -->
+        <nav class="nav-bar">
+            <button class="nav-tab active" data-tab="home" id="tab-btn-home">
+                <i class="fas fa-home"></i> <span id="el-nav-home">الرئيسية</span>
+            </button>
+            <button class="nav-tab" data-tab="about" id="tab-btn-about">
+                <i class="fas fa-user-heart"></i> <span id="el-nav-about">عني</span>
+            </button>
+            <button class="nav-tab" data-tab="friends" id="tab-btn-friends">
+                <i class="fas fa-heart"></i> <span id="el-nav-friends">صديقاتي</span>
+            </button>
+            <button class="nav-tab" data-tab="contact" id="tab-btn-contact">
+                <i class="fas fa-paper-plane"></i> <span id="el-nav-contact">تواصل</span>
+            </button>
+        </nav>
+
+        <!-- Main profile card -->
+        <div class="card">
+            
+            <!-- Pure CSS Cute ribbons/bows at card corners -->
+            <div class="ribbon-bow left">
+                <div class="bow-loop-l"></div>
+                <div class="bow-loop-r"></div>
+                <div class="bow-knot"></div>
+                <div class="bow-tail-l"></div>
+                <div class="bow-tail-r"></div>
+            </div>
+            <div class="ribbon-bow right">
+                <div class="bow-loop-l"></div>
+                <div class="bow-loop-r"></div>
+                <div class="bow-knot"></div>
+                <div class="bow-tail-l"></div>
+                <div class="bow-tail-r"></div>
+            </div>
+
+            <!-- Cute Interactive Bunny Mascot sitting on card -->
+            <div class="bunny-mascot" id="bunnyMascot">
+                <div class="bunny-love">💖</div>
+                <div class="bunny-ears">
+                    <div class="bunny-ear left"></div>
+                    <div class="bunny-ear right"></div>
+                </div>
+                <div class="bunny-face">
+                    <div class="bunny-eyes">
+                        <div class="bunny-eye left"></div>
+                        <div class="bunny-eye right"></div>
+                    </div>
+                    <div class="bunny-nose"></div>
+                    <div class="bunny-cheeks">
+                        <div class="bunny-cheek left"></div>
+                        <div class="bunny-cheek right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================================
+                 TAB 1: HOME (الرئيسية)
+                 ========================================= -->
+            <div class="tab-content active" id="tab-home">
+                <!-- Profile Avatar with animated glow ring -->
+                <div class="avatar-container">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-frame">
+                        <img src="malak.png" alt="Malak Profile Image">
+                    </div>
+                </div>
+
+                <!-- Profile identity details -->
+                <h1 class="name" id="el-name">ملاك مرجان</h1>
+                
+                <div class="badge-age" id="el-subtitle">
+                    <i class="fas fa-cake-candles highlight"></i> 1 ديسمبر 2011 | 14 عاماً من التألق
+                </div>
+
+                <!-- Description box with glassmorphism -->
+                <div class="description-box">
+                    <p id="el-desc1">فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.</p>
+                    <p id="el-desc2">تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النبيلة التي تضيء حياة من حولها.</p>
+                </div>
+
+                <!-- Countdown Widget to upcoming birthday -->
+                <div class="countdown-widget">
+                    <div class="countdown-title" id="countdown-title-text">
+                        <i class="fas fa-gift"></i> يوم ميلاد ملاك القادم ✨
+                    </div>
+                    <div class="countdown-grid">
+                        <div class="countdown-item">
+                            <span class="countdown-val" id="cd-days">00</span>
+                            <span class="countdown-unit" id="unit-days">يوم</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-val" id="cd-hours">00</span>
+                            <span class="countdown-unit" id="unit-hours">ساعة</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-val" id="cd-minutes">00</span>
+                            <span class="countdown-unit" id="unit-mins">دقيقة</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-val" id="cd-seconds">00</span>
+                            <span class="countdown-unit" id="unit-secs">ثانية</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Major Action Buttons -->
+                <div class="action-buttons">
+                    <!-- Instagram button -->
+                    <a href="https://www.instagram.com/mord_jaaane" target="_blank" class="primary-link insta-btn">
+                        <i class="fab fa-instagram"></i> <span id="el-insta">تابعني على إنستغرام</span>
+                    </a>
+                    
+                    <!-- Magic messages toggle -->
+                    <button id="magicBtn" class="primary-link magic-btn">
+                        <i class="fas fa-wand-magic-sparkles"></i> <span id="el-btn">رسالة لملاك</span>
+                    </button>
+                </div>
+
+                <!-- Floating card displaying positive messages -->
+                <div id="message" class="msg-display"></div>
+            </div>
+
+            <!-- =========================================
+                 TAB 2: ABOUT ME (عني)
+                 ========================================= -->
+            <div class="tab-content" id="tab-about">
+                <div class="about-intro" id="el-about-intro">
+                    مرحباً بكم في عالمي الصغير! هنا أشارككم بعضاً من تفاصيلي وهواياتي المفضلة.
+                </div>
+                
+                <div class="about-grid">
+                    <!-- Card 1: Birthday -->
+                    <div class="about-item">
+                        <i class="fas fa-calendar-day about-icon"></i>
+                        <span class="about-label" id="el-about-lbl-bday">تاريخ الميلاد</span>
+                        <span class="about-value" id="el-about-val-bday">1 ديسمبر 2011</span>
+                    </div>
+                    
+                    <!-- Card 2: Star Sign -->
+                    <div class="about-item">
+                        <i class="fas fa-compass about-icon"></i>
+                        <span class="about-label" id="el-about-lbl-sign">البرج الفلكي</span>
+                        <span class="about-value" id="el-about-val-sign">القوس ♐</span>
+                    </div>
+                    
+                    <!-- Card 3: Hobbies -->
+                    <div class="about-item">
+                        <i class="fas fa-palette about-icon"></i>
+                        <span class="about-label" id="el-about-lbl-hobbies">الهوايات المفضلة</span>
+                        <span class="about-value" id="el-about-val-hobbies">التصميم والرسم 🎨</span>
+                    </div>
+                    
+                    <!-- Card 4: Signature -->
+                    <div class="about-item">
+                        <i class="fas fa-wand-magic-sparkles about-icon"></i>
+                        <span class="about-label" id="el-about-lbl-trait">الصفات المميزة</span>
+                        <span class="about-value" id="el-about-val-trait">الأدب واللطف ✨</span>
+                    </div>
+                </div>
+
+                <div class="description-box" style="margin-top: 25px;">
+                    <p id="el-about-p1">فتاة مسلمة أعتز بحجابي وأسعى لأن أعكس جمال روحي وأخلاقي في كل تفاصيل حياتي.</p>
+                    <p id="el-about-p2">أحب مساعدة الآخرين ونشر الابتسامة والطاقة الإيجابية أينما كنت.</p>
+                </div>
+            </div>
+
+            <!-- =========================================
+                 TAB 3: FRIENDS (صديقاتي)
+                 ========================================= -->
+            <div class="tab-content" id="tab-friends">
+                <div class="description-box" style="text-align: center; margin-bottom: 25px;">
+                    <p id="el-friends-quote">"الصداقة زهرة بيضاء تنبت في القلب وتتفتح في السلوك، وصديقاتي هنّ ألوان حياتي وشركاء ابتساماتي." 🤍</p>
+                </div>
+
+                <!-- Best Friends section -->
+                <div class="friends-section" style="border-top: none; padding-top: 0; margin-top: 0;">
+                    <h3 class="friends-title" id="el-friends-title" style="margin-bottom: 20px;">
+                        <i class="fas fa-heart"></i> صديقاتي المقربات 🤍
+                    </h3>
+                    <div class="friends-list">
+                        <!-- Friend 1: Yousra -->
+                        <div class="friend-card">
+                            <div class="friend-profile">
+                                <i class="fas fa-heart"></i>
+                                <span>يسرى</span>
+                            </div>
+                            <a href="https://www.instagram.com/_yous.ra_yousra_" target="_blank" class="friend-action">Instagram</a>
+                        </div>
+                        
+                        <!-- Friend 2: Rania -->
+                        <div class="friend-card">
+                            <div class="friend-profile">
+                                <i class="fas fa-star"></i>
+                                <span>رانيا</span>
+                            </div>
+                            <a href="https://www.instagram.com/rania_4254" target="_blank" class="friend-action">Instagram</a>
+                        </div>
+                        
+                        <!-- Friend 3: Lyn -->
+                        <div class="friend-card">
+                            <div class="friend-profile">
+                                <i class="fas fa-wand-magic"></i>
+                                <span>لين</span>
+                            </div>
+                            <a href="https://www.instagram.com/lynhaffafa" target="_blank" class="friend-action">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =========================================
+                 TAB 4: CONTACT ME (تواصل)
+                 ========================================= -->
+            <div class="tab-content" id="tab-contact">
+                <div class="contact-intro" id="el-contact-intro">
+                    يسعدني جداً تواصلكم معي! اتركوا لي رسالة لطيفة، كلمة ملهمة أو تهنئة بمناسبة يوم ميلادي ✨
+                </div>
+                
+                <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); handleFormSubmit();">
+                    <div class="form-group">
+                        <label class="form-label" for="contact-name" id="el-label-name">اسمك الجميل 🌸</label>
+                        <input type="text" id="contact-name" class="form-input" placeholder="اكتب اسمك هنا..." required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-insta" id="el-label-insta">حساب الإنستغرام أو البريد ✉️</label>
+                        <input type="text" id="contact-insta" class="form-input" placeholder="@your_username" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-msg" id="el-label-msg">رسالتك اللطيفة 💖</label>
+                        <textarea id="contact-msg" class="form-textarea" placeholder="اكتب رسالتك أو أمنيتك هنا..." required></textarea>
+                    </div>
+                    <button type="submit" class="primary-link submit-btn">
+                        <i class="fas fa-paper-plane"></i> <span id="el-btn-send">أرسل حبك ✨</span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Beautiful Success Popup Alert -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="alert-popup" id="successPopup">
+        <i class="fas fa-heart alert-icon"></i>
+        <div class="alert-title" id="el-alert-title">تم الإرسال بنجاح! 💖</div>
+        <div class="alert-text" id="el-alert-text">شكراً لرسالتك اللطيفة التي ملأت قلبي بهجة وسروراً. سأقرؤها بكل حب!</div>
+        <button class="alert-close" onclick="closeSuccessPopup()" id="el-alert-close">إغلاق ✨</button>
+    </div>
+
+    <!-- YouTube Iframe API Script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        // === Language translations dictionary ===
+        const translations = {
+            ar: {
+                name: "ملاك مرجان",
+                subtitle: "<i class='fas fa-cake-candles highlight'></i> 1 ديسمبر 2011 | <span class='highlight'>14 عاماً من التألق</span>",
+                desc1: "فتاة في غاية الجمال، تتوج رونقها بحجابها الذي يزيدها نوراً وبهاءً.",
+                desc2: "تجمع بين حُسن الخُلق، الأدب الرفيع، والروح النبيلة التي تضيء حياة من حولها.",
+                insta: "تابعني على إنستغرام",
+                btn: "رسالة لملاك",
+                friendsTitle: "<i class='fas fa-heart'></i> صديقاتي المقربات 🤍",
+                countdownTitle: "<i class='fas fa-gift'></i> يوم ميلاد ملاك القادم ✨",
+                unitDays: "يوم",
+                unitHours: "ساعة",
+                unitMins: "دقيقة",
+                unitSecs: "ثانية",
+                messages: [
+                    "أخلاقكِ وجمالكِ بحجابكِ يجعلونكِ أميرة! 👑",
+                    "وجهٌ حَسَن وأخلاقٌ أحسن.. تبارك الرحمن! ✨",
+                    "14 عاماً من الأدب، الرقة، والجمال! 🌸",
+                    "ديسمبر فخور جداً بأنكِ من مواليده! ❄️",
+                    "حجابكِ تاجٌ يزيدكِ جمالاً فوق جمالك! 🤍",
+                    "ابتسامتكِ وأدبكِ هما سر روعتكِ! 🌟"
+                ],
+                // New elements
+                navHome: "الرئيسية",
+                navAbout: "عني",
+                navFriends: "صديقاتي",
+                navContact: "تواصل",
+                aboutIntro: "مرحباً بكم في عالمي الصغير! هنا أشارككم بعضاً من تفاصيلي وهواياتي المفضلة.",
+                aboutLblBday: "تاريخ الميلاد",
+                aboutValBday: "1 ديسمبر 2011",
+                aboutLblSign: "البرج الفلكي",
+                aboutValSign: "القوس ♐",
+                aboutLblHobbies: "الهوايات المفضلة",
+                aboutValHobbies: "التصميم والرسم 🎨",
+                aboutLblTrait: "الصفات المميزة",
+                aboutValTrait: "الأدب واللطف ✨",
+                aboutP1: "فتاة مسلمة أعتز بحجابي وأسعى لأن أعكس جمال روحي وأخلاقي في كل تفاصيل حياتي.",
+                aboutP2: "أحب مساعدة الآخرين ونشر الابتسامة والطاقة الإيجابية أينما كنت.",
+                friendsQuote: '"الصداقة زهرة بيضاء تنبت في القلب وتتفتح في السلوك، وصديقاتي هنّ ألوان حياتي وشركاء ابتساماتي." 🤍',
+                contactIntro: "يسعدني جداً تواصلكم معي! اتركوا لي رسالة لطيفة، كلمة ملهمة أو تهنئة بمناسبة يوم ميلادي ✨",
+                labelName: "اسمك الجميل 🌸",
+                labelInsta: "حساب الإنستغرام أو البريد ✉️",
+                labelMsg: "رسالتك اللطيفة 💖",
+                btnSend: "أرسل حبك ✨",
+                placeholderName: "اكتب اسمك هنا...",
+                placeholderInsta: "@your_username",
+                placeholderMsg: "اكتب رسالتك أو أمنيتك هنا...",
+                alertTitle: "تم الإرسال بنجاح! 💖",
+                alertText: "شكراً لرسالتك اللطيفة التي ملأت قلبي بهجة وسروراً. سأقرؤها بكل حب!",
+                alertClose: "إغلاق ✨"
+            },
+            en: {
+                name: "Malak Marjan",
+                subtitle: "<i class='fas fa-cake-candles highlight'></i> December 1, 2011 | <span class='highlight'>14 Years of Brilliance</span>",
+                desc1: "A girl of utmost beauty, crowned by her hijab which adds to her light and radiance.",
+                desc2: "She combines good manners, high refinement, and a noble spirit that brightens the lives of those around her.",
+                insta: "Follow on Instagram",
+                btn: "Message for Malak",
+                friendsTitle: "<i class='fas fa-heart'></i> My Best Friends 🤍",
+                countdownTitle: "<i class='fas fa-gift'></i> Malak's Next Birthday ✨",
+                unitDays: "Days",
+                unitHours: "Hrs",
+                unitMins: "Mins",
+                unitSecs: "Secs",
+                messages: [
+                    "Your manners and beauty with your hijab make you a princess! 👑",
+                    "A beautiful face and beautiful manners.. Blessed be! ✨",
+                    "14 years of politeness, elegance, and beauty! 🌸",
+                    "December is so proud you were born in it! ❄️",
+                    "Your hijab is a crown that adds beauty to your beauty! 🤍",
+                    "Your smile and manners are the secret to your awesomeness! 🌟"
+                ],
+                // New elements
+                navHome: "Home",
+                navAbout: "About Me",
+                navFriends: "Friends",
+                navContact: "Contact",
+                aboutIntro: "Welcome to my little world! Here I share some of my details and favorite hobbies.",
+                aboutLblBday: "Date of Birth",
+                aboutValBday: "December 1, 2011",
+                aboutLblSign: "Astrological Sign",
+                aboutValSign: "Sagittarius ♐",
+                aboutLblHobbies: "Favorite Hobbies",
+                aboutValHobbies: "Designing & Drawing 🎨",
+                aboutLblTrait: "Fav Qualities",
+                aboutValTrait: "Politeness & Kindness ✨",
+                aboutP1: "A Muslim girl, proud of my hijab, and striving to reflect the beauty of my soul and manners in all aspects of life.",
+                aboutP2: "I love helping others and spreading smiles and positive energy wherever I go.",
+                friendsQuote: '"Friendship is a white flower that grows in the heart and blooms in behavior. My friends are the colors of my life and the partners in my smiles." 🤍',
+                contactIntro: "I'm very happy for you to contact me! Leave a sweet message, inspiring words, or birthday wishes ✨",
+                labelName: "Your Beautiful Name 🌸",
+                labelInsta: "Instagram Account or Email ✉️",
+                labelMsg: "Your Sweet Message 💖",
+                btnSend: "Send Your Love ✨",
+                placeholderName: "Write your name here...",
+                placeholderInsta: "@your_username",
+                placeholderMsg: "Write your message or wishes here...",
+                alertTitle: "Sent Successfully! 💖",
+                alertText: "Thank you for your lovely message that filled my heart with joy and happiness. I will read it with love!",
+                alertClose: "Close ✨"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        // === DOM Elements selection ===
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const langToggleBtn = document.getElementById('langToggle');
+        const musicToggleBtn = document.getElementById('musicToggle');
+        const htmlElement = document.documentElement;
+        const msgElement = document.getElementById('message');
+        const bunnyMascot = document.getElementById('bunnyMascot');
+        // ملاحظة: musicToggleBtn معرّف هنا فقط - لا يكرر لاحقاً
+
+        // === Load saved theme and language configurations ===
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggleBtn.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        if (localStorage.getItem('lang') === 'en') {
+            setLanguage('en');
+        }
+
+        // === Toggle light/dark modes ===
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggleBtn.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+            // Trigger particle type rebuild based on new theme
+            setupBackgroundParticles();
+        });
+
+        // === Language toggle logic ===
+        langToggleBtn.addEventListener('click', () => {
+            const nextLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(nextLang);
+        });
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            
+            htmlElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            htmlElement.setAttribute('lang', lang);
+
+            // Update interactive UI elements
+            document.getElementById('el-name').innerHTML = translations[lang].name;
+            document.getElementById('el-subtitle').innerHTML = translations[lang].subtitle;
+            document.getElementById('el-desc1').innerHTML = translations[lang].desc1;
+            document.getElementById('el-desc2').innerHTML = translations[lang].desc2;
+            document.getElementById('el-insta').innerHTML = translations[lang].insta;
+            document.getElementById('el-btn').innerHTML = translations[lang].btn;
+            document.getElementById('el-friends-title').innerHTML = translations[lang].friendsTitle;
+            document.getElementById('countdown-title-text').innerHTML = translations[lang].countdownTitle;
+            
+            document.getElementById('unit-days').innerText = translations[lang].unitDays;
+            document.getElementById('unit-hours').innerText = translations[lang].unitHours;
+            document.getElementById('unit-mins').innerText = translations[lang].unitMins;
+            document.getElementById('unit-secs').innerText = translations[lang].unitSecs;
+
+            // Translate Navigation tabs
+            document.getElementById('el-nav-home').innerText = translations[lang].navHome;
+            document.getElementById('el-nav-about').innerText = translations[lang].navAbout;
+            document.getElementById('el-nav-friends').innerText = translations[lang].navFriends;
+            document.getElementById('el-nav-contact').innerText = translations[lang].navContact;
+
+            // Translate About tab elements
+            document.getElementById('el-about-intro').innerText = translations[lang].aboutIntro;
+            document.getElementById('el-about-lbl-bday').innerText = translations[lang].aboutLblBday;
+            document.getElementById('el-about-val-bday').innerText = translations[lang].aboutValBday;
+            document.getElementById('el-about-lbl-sign').innerText = translations[lang].aboutLblSign;
+            document.getElementById('el-about-val-sign').innerText = translations[lang].aboutValSign;
+            document.getElementById('el-about-lbl-hobbies').innerText = translations[lang].aboutLblHobbies;
+            document.getElementById('el-about-val-hobbies').innerText = translations[lang].aboutValHobbies;
+            document.getElementById('el-about-lbl-trait').innerText = translations[lang].aboutLblTrait;
+            document.getElementById('el-about-val-trait').innerText = translations[lang].aboutValTrait;
+            document.getElementById('el-about-p1').innerText = translations[lang].aboutP1;
+            document.getElementById('el-about-p2').innerText = translations[lang].aboutP2;
+
+            // Translate Friends tab elements
+            document.getElementById('el-friends-quote').innerText = translations[lang].friendsQuote;
+
+            // Translate Contact tab elements
+            document.getElementById('el-contact-intro').innerText = translations[lang].contactIntro;
+            document.getElementById('el-label-name').innerHTML = translations[lang].labelName;
+            document.getElementById('el-label-insta').innerHTML = translations[lang].labelInsta;
+            document.getElementById('el-label-msg').innerHTML = translations[lang].labelMsg;
+            document.getElementById('el-btn-send').innerText = translations[lang].btnSend;
+            
+            // Placeholders
+            document.getElementById('contact-name').placeholder = translations[lang].placeholderName;
+            document.getElementById('contact-insta').placeholder = translations[lang].placeholderInsta;
+            document.getElementById('contact-msg').placeholder = translations[lang].placeholderMsg;
+
+            // Translate Success popup
+            document.getElementById('el-alert-title').innerText = translations[lang].alertTitle;
+            document.getElementById('el-alert-text').innerText = translations[lang].alertText;
+            document.getElementById('el-alert-close').innerText = translations[lang].alertClose;
+
+            // Reset dynamic message container
+            msgElement.classList.remove('show');
+        }
+
+        // === Background audio handling (YouTube Player API) ===
+        let player;
+        let isMusicPlaying = false;
+        let playerReady = false;
+        let autoplayTriggered = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '0',
+                width: '0',
+                videoId: 'v1rrjiOxiEY',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'v1rrjiOxiEY',
+                    'mute': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            playerReady = true;
+            // ابدأ مكتوماً (تسمح به المتصفحات دائماً)
+            event.target.mute();
+            event.target.playVideo();
+            // انتظر أول تفاعل لرفع الكتم فوراً
+            setupAutoplayUnmute();
+        }
+
+        function onPlayerStateChange(event) {
+            // إذا توقف الفيديو غير متعمد، أعد التشغيل
+            if (event.data === YT.PlayerState.ENDED) {
+                player.playVideo();
+            }
+        }
+
+        // === أول تفاعل من المستخدم → ارفع الكتم فوراً ===
+        function setupAutoplayUnmute() {
+            const unmuteOnInteraction = () => {
+                if (!autoplayTriggered && playerReady && player) {
+                    autoplayTriggered = true;
+                    player.unMute();
+                    player.setVolume(80);
+                    isMusicPlaying = true;
+                    if (musicToggleBtn) {
+                        musicToggleBtn.classList.add('playing');
+                        spawnMusicNotes();
+                    }
+                }
+            };
+            // استمع لأي تفاعل (once: true يعني مرة واحدة فقط)
+            document.addEventListener('click', unmuteOnInteraction, { once: true });
+            document.addEventListener('touchstart', unmuteOnInteraction, { once: true });
+            document.addEventListener('scroll', unmuteOnInteraction, { once: true });
+            document.addEventListener('keydown', unmuteOnInteraction, { once: true });
+        }
+
+        // زر تشغيل/إيقاف الموسيقى اليدوي
+        musicToggleBtn.addEventListener('click', () => {
+            if (!player || typeof player.playVideo !== 'function') return;
+
+            if (!isMusicPlaying) {
+                player.unMute();
+                player.playVideo();
+                isMusicPlaying = true;
+                musicToggleBtn.classList.add('playing');
+                spawnMusicNotes();
+            } else {
+                player.pauseVideo();
+                isMusicPlaying = false;
+                musicToggleBtn.classList.remove('playing');
+            }
+        });
+
+        // Rise cute music notes from the music toggle
+        function spawnMusicNotes() {
+            if (!isMusicPlaying) return;
+            
+            const btnRect = musicToggleBtn.getBoundingClientRect();
+            const note = document.createElement('span');
+            const noteIcons = ['♫', '♪', '♬', '♩'];
+            note.innerHTML = noteIcons[Math.floor(Math.random() * noteIcons.length)];
+            note.className = 'music-note';
+            note.style.left = (btnRect.left + btnRect.width / 2 + (Math.random() - 0.5) * 20) + 'px';
+            note.style.top = (btnRect.top + window.scrollY) + 'px';
+            
+            document.body.appendChild(note);
+            setTimeout(() => note.remove(), 1500);
+
+            // Recursively generate notes while music continues
+            setTimeout(spawnMusicNotes, 600);
+        }
+
+        // === Interactive Magic message button ===
+        const magicBtn = document.getElementById('magicBtn');
+
+        magicBtn.addEventListener('click', (e) => {
+            const msgs = translations[currentLang].messages;
+            const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+            
+            msgElement.classList.remove('show');
+            setTimeout(() => {
+                msgElement.innerText = randomMsg;
+                msgElement.classList.add('show');
+            }, 150);
+
+            // Pop sparkle explosion from tap/click coordinates
+            createSparkleExplosion(e.clientX, e.clientY);
+        });
+
+        // Spawn magical particle bursts
+        function createSparkleExplosion(x, y) {
+            const icons = ['✨', '🌸', '💖', '🤍', '⭐', '🎀'];
+            const count = 18;
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'sparkle-particle';
+                particle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                
+                // Absolute positioning relative to body
+                particle.style.left = x + 'px';
+                particle.style.top = (y + window.scrollY) + 'px';
+                
+                // Exploding trajectories
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 40 + Math.random() * 90;
+                const mx = Math.cos(angle) * distance;
+                const my = Math.sin(angle) * distance;
+                const rot = (Math.random() - 0.5) * 360;
+                
+                particle.style.setProperty('--mx', `${mx}px`);
+                particle.style.setProperty('--my', `${my}px`);
+                particle.style.setProperty('--rot', `${rot}deg`);
+                
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        // === Cursor heart trail effect ===
+        window.addEventListener('mousemove', (e) => {
+            // Limit creation frequency to prevent excessive overhead
+            if (Math.random() > 0.08) return; 
+            spawnCursorTrailParticle(e.clientX, e.clientY + window.scrollY);
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (Math.random() > 0.08) return;
+            const touch = e.touches[0];
+            spawnCursorTrailParticle(touch.clientX, touch.clientY + window.scrollY);
+        });
+
+        function spawnCursorTrailParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.className = 'sparkle-particle';
+            const trailIcons = ['💖', '✨', '🌸', '🤍', '⭐'];
+            particle.innerHTML = trailIcons[Math.floor(Math.random() * trailIcons.length)];
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            
+            // Subtle slow drift
+            const mx = (Math.random() - 0.5) * 30;
+            const my = -30 - Math.random() * 35;
+            const rot = (Math.random() - 0.5) * 180;
+            
+            particle.style.setProperty('--mx', `${mx}px`);
+            particle.style.setProperty('--my', `${my}px`);
+            particle.style.setProperty('--rot', `${rot}deg`);
+            
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 1000);
+        }
+
+        // Mascot active heart burst
+        bunnyMascot.addEventListener('click', (e) => {
+            const rect = bunnyMascot.getBoundingClientRect();
+            createSparkleExplosion(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        });
+
+        // === Birthday Countdown Widget calculations ===
+        function updateBirthdayCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            
+            // Birthday is December 1st
+            let bday = new Date(currentYear, 11, 1); // 11 is December (0-indexed)
+            
+            // If birthday already passed this year, calculate for next year
+            if (now > bday) {
+                bday = new Date(currentYear + 1, 11, 1);
+            }
+            
+            const difference = bday - now;
+            
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        // === Navigation Tabs Switcher Logic ===
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+
+                // Remove active classes
+                navTabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Add active classes
+                tab.classList.add('active');
+                document.getElementById(`tab-${targetTab}`).classList.add('active');
+                
+                // Explode tiny spark on tab switch coordinates
+                const tabRect = tab.getBoundingClientRect();
+                createSparkleExplosion(tabRect.left + tabRect.width / 2, tabRect.top + tabRect.height / 2);
+            });
+        });
+
+        // === Glass Contact Form & Cute Popup Logic ===
+        function handleFormSubmit() {
+            const nameInput = document.getElementById('contact-name');
+            const instaInput = document.getElementById('contact-insta');
+            const msgInput = document.getElementById('contact-msg');
+            const submitBtn = document.querySelector('.submit-btn');
+
+            // Burst sparkles around the submit button
+            const btnRect = submitBtn.getBoundingClientRect();
+            createSparkleExplosion(btnRect.left + btnRect.width / 2, btnRect.top + btnRect.height / 2);
+
+            // Reset inputs
+            nameInput.value = '';
+            instaInput.value = '';
+            msgInput.value = '';
+
+            // Show custom Success Popup & Overlay
+            const overlay = document.getElementById('popupOverlay');
+            const popup = document.getElementById('successPopup');
+            
+            overlay.classList.add('show');
+            popup.classList.add('show');
+
+            // Double burst in center of screen
+            setTimeout(() => {
+                createSparkleExplosion(window.innerWidth / 2, window.innerHeight / 2);
+            }, 300);
+        }
+
+        function closeSuccessPopup() {
+            const overlay = document.getElementById('popupOverlay');
+            const popup = document.getElementById('successPopup');
+            
+            overlay.classList.remove('show');
+            popup.classList.remove('show');
+        }
+
+        // Run countdown timer
+        updateBirthdayCountdown();
+        setInterval(updateBirthdayCountdown, 1000);
+
+        // === Hardware Accelerated HTML5 Canvas background particle system ===
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        const maxParticles = 30;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20 - Math.random() * 50;
+                this.size = Math.random() * 12 + 6;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 1;
+                this.rot = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 0.5) * 1.5;
+                // Light mode is sakura petal, dark mode is glowing star
+                this.isLight = !document.body.classList.contains('dark-mode');
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rot += this.rotSpeed;
+
+                if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rot * Math.PI / 180);
+                
+                if (this.isLight) {
+                    // Draw beautiful soft pink sakura petal
+                    ctx.fillStyle = 'rgba(255, 182, 198, 0.7)';
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size / 1.7, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Center indentation/line of petal
+                    ctx.strokeStyle = 'rgba(255, 117, 140, 0.4)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(-this.size, 0);
+                    ctx.lineTo(this.size, 0);
+                    ctx.stroke();
+                } else {
+                    // Draw bright glowing cosmic star
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = 'rgba(244, 114, 182, 0.8)';
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                    
+                    // 4 pointed star
+                    ctx.beginPath();
+                    ctx.moveTo(0, -this.size);
+                    ctx.quadraticCurveTo(0, 0, this.size, 0);
+                    ctx.quadraticCurveTo(0, 0, 0, this.size);
+                    ctx.quadraticCurveTo(0, 0, -this.size, 0);
+                    ctx.quadraticCurveTo(0, 0, 0, -this.size);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        function setupBackgroundParticles() {
+            particles = [];
+            for (let i = 0; i < maxParticles; i++) {
+                const p = new Particle();
+                // Randomize heights initially so they don't fall as a single flat wave
+                p.y = Math.random() * canvas.height; 
+                particles.push(p);
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Initialize and trigger canvas loops
+        setupBackgroundParticles();
+        animateParticles();
+    </script>
+</body>
+</html>
